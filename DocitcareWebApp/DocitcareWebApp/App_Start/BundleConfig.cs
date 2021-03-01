@@ -21,10 +21,32 @@ namespace DocitcareWebApp
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
+            //vendor theme js
+
+            bundles.Add(new ScriptBundle("~/bundles/vendor").Include(
+                      "~/Content/Theme/vendors/js/vendors.min.js",
+                      "~/Content/Theme/vendors/js/form-login-register.js",
+                      "~/Content/Theme/vendors/js/forms/validation/jqBootstrapValidation.js",
+                      "~/Content/Theme/vendors/js/forms/icheck/icheck.min.js",
+                      "~/Content/Theme/vendors/js/app-menu.js",
+                      "~/Content/Theme/vendors/js/app.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap-extended.css",
+                      "~/Content/site.css",
+                      "~/Content/Theme/vendors/css/bootstrap.css",
+                      "~/Content/Theme/vendors/css/bootstrap-extended.css",
+                      "~/Content/Theme/vendors/css/vendors.min.css",
+                      "~/Content/Theme/vendors/css/login-register.css",
+                      "~/Content/Theme/vendors/css/forms/icheck/icheck.css",
+                       "~/Content/Theme/vendors/css/forms/icheck/custom.css",
+                       "~/Content/Theme/vendors/css/colors.css",
+                       "~/Content/Theme/vendors/css/components.css",
+                        "~/Content/Theme/vendors/css/palette-gradient.css",
+                         "~/Content/Theme/vendors/css/vertical-menu-modern.css",
+                         "~/Content/Theme/vendors/css/style.css"));
+
         }
     }
 }
