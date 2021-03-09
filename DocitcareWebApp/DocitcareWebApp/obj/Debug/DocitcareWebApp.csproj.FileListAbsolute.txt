@@ -77,3 +77,17 @@ D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareW
 D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareWebApp.csproj.CopyComplete
 D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareWebApp.dll
 D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareWebApp.pdb
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\bin\EntityFramework.dll
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\bin\EntityFramework.SqlServer.dll
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\bin\EntityFramework.xml
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\bin\EntityFramework.SqlServer.xml
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareWebApp.Migrations.initaltables.resources
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareWebApp.csproj.GenerateResource.cache
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\bin\Unity.Abstractions.dll
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\bin\Unity.Container.dll
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\bin\Unity.Mvc5.dll
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\bin\System.Threading.Tasks.Extensions.dll
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\bin\Unity.Abstractions.pdb
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\bin\Unity.Container.pdb

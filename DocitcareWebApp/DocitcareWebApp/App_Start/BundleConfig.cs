@@ -31,7 +31,15 @@ namespace DocitcareWebApp
                       "~/Content/Theme/app-assets/js/core/app-menu.js",
                       "~/Content/Theme/app-assets/js/core/app.js",
                        "~/Content/Theme/app-assets/vendors/js/charts/apexcharts/apexcharts.min.js",
-                        "~/Content/Theme/app-assets/js/scripts/cards/card-statistics.js"
+                       "~/Content/Theme/app-assets/js/scripts/cards/card-statistics.js",
+                       "~/Content/Theme/app-assets/vendors/js/tables/datatable/datatables.min.js",
+                       "~/Content/Theme/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js",
+                       "~/Content/Theme/app-assets/js/scripts/tables/datatables-extensions/datatable-responsive.js",
+                      "~/Content/Theme/app-assets/vendors/js/tables/datatable/dataTables.colReorder.min.js",
+                      "~/Content/Theme/app-assets/vendors/js/tables/buttons.colVis.min.js",
+                      "~/Content/Theme/app-assets/vendors/js/tables/datatable/dataTables.buttons.min.js",
+                      "~/Content/Theme/app-assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js",
+                      "~/Content/Theme/app-assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js"
                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -50,9 +58,18 @@ namespace DocitcareWebApp
                       "~/Content/Theme/app-assets/fonts/simple-line-icons/style.min.css",
                       "~/Content/Theme/app-assets/css/pages/card-statistics.css",
                       "~/Content/Theme/app-assets/css/pages/vertical-timeline.css",
-                      "~/Content/Theme/assets/css/style.css"));
+                      "~/Content/Theme/assets/css/style.css",
+                      "~/Content/Theme/app-assets/vendors/css/tables/datatable/datatables.min.css",
+                      "~/Content/Theme/app-assets/vendors/css/tables/extensions/responsive.dataTables.min.css",
+                      "~/Content/Theme/app-assets/vendors/css/tables/extensions/colReorder.dataTables.min.css",
+                      "~/Content/Theme/app-assets/vendors/css/tables/extensions/buttons.dataTables.min.css",
+                      "~/Content/Theme/app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css",
+                      "~/Content/Theme/app-assets/vendors/css/tables/extensions/fixedHeader.dataTables.min.css"
 
-            
+                      ));
+
+
+
 
         }
     }
