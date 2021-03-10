@@ -6,29 +6,29 @@ using System.Web.Mvc;
 
 namespace DocitcareWebApp.Areas.Admin.Controllers
 {
-    public class BranchManagementController : Controller
+    public class DepartmentManagementController : Controller
     {
-        // GET: Admin/BranchManagement
+        // GET: Admin/DepartmentManagement
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Admin/BranchManagement/Details/5
+        // GET: Admin/DepartmentManagement/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Admin/BranchManagement/Create
-        public ActionResult Branch()
+        // GET: Admin/DepartmentManagement/Create
+        public ActionResult Department()
         {
             return View();
         }
 
-        // POST: Admin/BranchManagement/Create
+        // POST: Admin/DepartmentManagement/Create
         [HttpPost]
-        public ActionResult Branch(FormCollection collection)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
@@ -42,13 +42,13 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin/BranchManagement/Edit/5
+        // GET: Admin/DepartmentManagement/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Admin/BranchManagement/Edit/5
+        // POST: Admin/DepartmentManagement/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +64,13 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin/BranchManagement/Delete/5
+        // GET: Admin/DepartmentManagement/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Admin/BranchManagement/Delete/5
+        // POST: Admin/DepartmentManagement/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

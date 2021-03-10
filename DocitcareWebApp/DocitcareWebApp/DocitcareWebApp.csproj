@@ -144,8 +144,10 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BranchManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DepartmentManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginPageController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleManagementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StaffManagementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\Domain\Branch.cs" />
     <Compile Include="Core\Domain\Role.cs" />
@@ -3248,6 +3250,11 @@
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\BranchManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\RoleManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BranchManagement\Branch.cshtml" />
+    <Content Include="Areas\Admin\Views\DepartmentManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DepartmentManagement\Department.cshtml" />
+    <Content Include="Areas\Admin\Views\StaffManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\StaffManagement\Staff.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

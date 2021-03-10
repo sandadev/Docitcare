@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Branch List</h4>
+                    <h4 class="card-title">Department List</h4>
                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -28,14 +28,14 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Branch Id
+                                        Department Id
                                         @*@Html.DisplayNameFor(model => model.RoleName)*@
                                     </th>
                                     <th>
-                                        Branch Name
+                                        Department Name
                                         @*@Html.DisplayNameFor(model => model.Status.StatusName)*@
                                     </th>
-                                    <th>City</th>
+                                    <th>No.of Branches</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -69,6 +69,6 @@
 <!-- END: Content-->
 
 <p>
-    @Html.ActionLink("Create New", "Branch", new { @class = "btn btn-primary btn-min-width mr-1 mb-1" })
+    @Html.ActionLink("Create New", "Department", new { @class = "btn btn-primary btn-min-width mr-1 mb-1" })
 </p>
 

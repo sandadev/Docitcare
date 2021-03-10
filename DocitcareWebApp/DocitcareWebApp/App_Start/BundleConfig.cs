@@ -39,7 +39,9 @@ namespace DocitcareWebApp
                       "~/Content/Theme/app-assets/vendors/js/tables/buttons.colVis.min.js",
                       "~/Content/Theme/app-assets/vendors/js/tables/datatable/dataTables.buttons.min.js",
                       "~/Content/Theme/app-assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js",
-                      "~/Content/Theme/app-assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js"
+                      "~/Content/Theme/app-assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js",
+                      "~/Content/Theme/app-assets/vendors/js/forms/select/select2.full.min.js",
+                      "~/Content/Theme/app-assets/js/scripts/forms/select/form-select2.js"
                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -64,7 +66,8 @@ namespace DocitcareWebApp
                       "~/Content/Theme/app-assets/vendors/css/tables/extensions/colReorder.dataTables.min.css",
                       "~/Content/Theme/app-assets/vendors/css/tables/extensions/buttons.dataTables.min.css",
                       "~/Content/Theme/app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css",
-                      "~/Content/Theme/app-assets/vendors/css/tables/extensions/fixedHeader.dataTables.min.css"
+                      "~/Content/Theme/app-assets/vendors/css/tables/extensions/fixedHeader.dataTables.min.css",
+                      "~/Content/Theme/app-assets/vendors/css/forms/selects/select2.min.css"
 
                       ));
 
