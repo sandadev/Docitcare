@@ -1,0 +1,121 @@
+﻿@model IEnumerable<DocitcareWebApp.Core.Domain.Entity>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SuperAdmin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- BEGIN: Content-->
+<!-- Modal details display -->
+<section id="modal">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Entity List</h4>
+                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                            <li><a data-action="collapse"><i class="feather icon-minus"></i></a></li>
+                            <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
+                            <li><a data-action="expand"><i class="feather icon-maximize"></i></a></li>
+                            <li><a data-action="close"><i class="feather icon-x"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("Add Entity", "NewEntity")
+                </p>
+                <div class="card-content collapse show">
+                    <div class="card-body card-dashboard">
+                        <table class="table table-striped table-bordered dataex-res-modal dataex-res-configuration">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.HospitalName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.HoilderFirstName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.HolderLastName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.HospitalContactNumber1)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ContactPersonName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ContactPhoneNumberName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Address)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.RegisteredDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EstablishedYear)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HospitalName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HoilderFirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HolderLastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HospitalContactNumber1)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ContactPersonName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ContactPhoneNumberName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Address)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RegisteredDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EstablishedYear)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "EditEntity", new { id = item.EntityId }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.EntityId }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.EntityId })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Modal details display -->
+<!-- END: Content-->
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+

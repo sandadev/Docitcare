@@ -9,6 +9,10 @@ namespace DocitcareWebApp.Core
     {
 
         IRoleRepository Roles { get; }
+        IEntityRepository Entities { get; }
+        IAPTSCitiesRepository APTSCities { get; }
+        IBranchRepository Branch { get; }
+        IStatusRepository Status { get; }
         int Complete();
     }
 }

@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DocitcareWebApp</RootNamespace>
     <AssemblyName>DocitcareWebApp</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -25,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,6 +54,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
@@ -64,11 +65,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -113,6 +111,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.11.1\lib\net47\Unity.Abstractions.dll</HintPath>
     </Reference>
@@ -132,11 +131,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -148,13 +142,24 @@
     <Compile Include="Areas\Admin\Controllers\LoginPageController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffManagementController.cs" />
+    <Compile Include="Areas\SuperAdmin\Controllers\EntityController.cs" />
+    <Compile Include="Areas\SuperAdmin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\SuperAdmin\SuperAdminAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Core\Domain\AP_TS_Cities.cs" />
     <Compile Include="Core\Domain\Branch.cs" />
+    <Compile Include="Core\Domain\Entity.cs" />
     <Compile Include="Core\Domain\Role.cs" />
     <Compile Include="Core\Domain\Status.cs" />
+    <Compile Include="Core\Domain\SuperAdminBranches.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Core\Repositories\IAPTSCitiesRepository.cs" />
+    <Compile Include="Core\Repositories\IBranchRepository.cs" />
+    <Compile Include="Core\Repositories\IEntityRepository.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Core\Repositories\IRoleRepository.cs" />
+    <Compile Include="Core\Repositories\IStatusRepository.cs" />
+    <Compile Include="Core\ViewModels\BranchViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -162,12 +167,49 @@
     <Compile Include="Migrations\202103090628113_initaltables.designer.cs">
       <DependentUpon>202103090628113_initaltables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103151710598_entityandrolesadded.cs" />
+    <Compile Include="Migrations\202103151710598_entityandrolesadded.Designer.cs">
+      <DependentUpon>202103151710598_entityandrolesadded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103151726259_addeddatabase_EntityandBranches.cs" />
+    <Compile Include="Migrations\202103151726259_addeddatabase_EntityandBranches.Designer.cs">
+      <DependentUpon>202103151726259_addeddatabase_EntityandBranches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103171739564_addedAPTStable.cs" />
+    <Compile Include="Migrations\202103171739564_addedAPTStable.Designer.cs">
+      <DependentUpon>202103171739564_addedAPTStable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103171833389_addedBranchTable.cs" />
+    <Compile Include="Migrations\202103171833389_addedBranchTable.Designer.cs">
+      <DependentUpon>202103171833389_addedBranchTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103171955100_addednewcolumntobranch.cs" />
+    <Compile Include="Migrations\202103171955100_addednewcolumntobranch.Designer.cs">
+      <DependentUpon>202103171955100_addednewcolumntobranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103182110213_addedEntityIdColumn.cs" />
+    <Compile Include="Migrations\202103182110213_addedEntityIdColumn.Designer.cs">
+      <DependentUpon>202103182110213_addedEntityIdColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103182112498_addedcityandstatusidColumn.cs" />
+    <Compile Include="Migrations\202103182112498_addedcityandstatusidColumn.Designer.cs">
+      <DependentUpon>202103182112498_addedcityandstatusidColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103182117252_updateddataannotaions.cs" />
+    <Compile Include="Migrations\202103182117252_updateddataannotaions.Designer.cs">
+      <DependentUpon>202103182117252_updateddataannotaions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\DocitcareDbContext.cs" />
+    <Compile Include="Persistence\Repositories\APTSCitiesRepository.cs" />
+    <Compile Include="Persistence\Repositories\BranchRepository.cs" />
+    <Compile Include="Persistence\Repositories\EntityRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
     <Compile Include="Persistence\Repositories\RoleRepository.cs" />
+    <Compile Include="Persistence\Repositories\StatusRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\ImageUpload.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -3248,13 +3290,20 @@
     <Content Include="Content\Theme\app-assets\vendors\css\forms\quill\fonts\KaTeX_Math-Italic.woff2" />
     <Content Include="Content\Theme\app-assets\vendors\js\charts\leaflet\data\us-states.json" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\BranchManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\RoleManagement\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\BranchManagement\Branch.cshtml" />
     <Content Include="Areas\Admin\Views\DepartmentManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DepartmentManagement\Department.cshtml" />
     <Content Include="Areas\Admin\Views\StaffManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\StaffManagement\Staff.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\web.config" />
+    <Content Include="Areas\SuperAdmin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\Entity\Index.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\Entity\NewEntity.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\Entity\EditEntity.cshtml" />
+    <Content Include="Areas\Admin\Views\BranchManagement\Branch.cshtml" />
+    <Content Include="Areas\Admin\Views\BranchManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BranchManagement\EditBranch.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3285,7 +3334,10 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Admin\" />
+    <Folder Include="Areas\SuperAdmin\Data\" />
+    <Folder Include="Images\Branch\" />
     <Folder Include="Models\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -3303,6 +3355,30 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202103090628113_initaltables.resx">
       <DependentUpon>202103090628113_initaltables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103151710598_entityandrolesadded.resx">
+      <DependentUpon>202103151710598_entityandrolesadded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103151726259_addeddatabase_EntityandBranches.resx">
+      <DependentUpon>202103151726259_addeddatabase_EntityandBranches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103171739564_addedAPTStable.resx">
+      <DependentUpon>202103171739564_addedAPTStable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103171833389_addedBranchTable.resx">
+      <DependentUpon>202103171833389_addedBranchTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103171955100_addednewcolumntobranch.resx">
+      <DependentUpon>202103171955100_addednewcolumntobranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103182110213_addedEntityIdColumn.resx">
+      <DependentUpon>202103182110213_addedEntityIdColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103182112498_addedcityandstatusidColumn.resx">
+      <DependentUpon>202103182112498_addedcityandstatusidColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103182117252_updateddataannotaions.resx">
+      <DependentUpon>202103182117252_updateddataannotaions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -3333,12 +3409,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

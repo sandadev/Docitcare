@@ -3,7 +3,7 @@ using DocitcareWebApp.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Data.Entity;
 
 namespace DocitcareWebApp.Persistence.Repositories
 {
@@ -17,6 +17,11 @@ namespace DocitcareWebApp.Persistence.Repositories
         public DocitcareDbContext DocitcareDbContext
         {
             get { return Context as DocitcareDbContext; }
+        }
+
+        public IEnumerable<Role> GetRolesWithStatus()
+        {
+            return DocitcareDbContext.Roles.Include(r => r.Status).ToList();
         }
     }
 }

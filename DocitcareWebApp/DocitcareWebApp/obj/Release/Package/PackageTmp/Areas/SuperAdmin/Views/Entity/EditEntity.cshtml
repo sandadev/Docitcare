@@ -1,0 +1,102 @@
+﻿@model DocitcareWebApp.Core.Domain.Entity
+
+@{
+    ViewBag.Title = "EditEntity";
+    Layout = "~/Areas/SuperAdmin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row match-height">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title" id="from-actions-top-left">Create Entity</h4>
+                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="feather icon-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="feather icon-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="feather icon-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collpase show">
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <h4 class="form-section"><i class="feather icon-user"></i> Hospital Info</h4>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.EntityId)
+                        <div class="row">
+                            <div class="form-group col-md-6 mb-2">
+                                @Html.LabelFor(model => model.HospitalName)
+                                @Html.EditorFor(model => model.HospitalName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.HospitalName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                @Html.LabelFor(model => model.RegisteredDate)
+                                @Html.EditorFor(model => model.RegisteredDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RegisteredDate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                @Html.LabelFor(model => model.HoilderFirstName)
+                                @Html.EditorFor(model => model.HoilderFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.HoilderFirstName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                @Html.LabelFor(model => model.HolderLastName)
+                                @Html.EditorFor(model => model.HolderLastName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.HolderLastName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                @Html.LabelFor(model => model.Email)
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                @Html.LabelFor(model => model.EstablishedYear)
+                                @Html.EditorFor(model => model.EstablishedYear, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EstablishedYear, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                @Html.LabelFor(model => model.HospitalContactNumber1)
+                                @Html.EditorFor(model => model.HospitalContactNumber1, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.HospitalContactNumber1, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                @Html.LabelFor(model => model.HospitalContactNumber2)
+                                @Html.EditorFor(model => model.HospitalContactNumber2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.HospitalContactNumber2, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                @Html.LabelFor(model => model.ContactPersonName)
+                                @Html.EditorFor(model => model.ContactPersonName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ContactPersonName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                @Html.LabelFor(model => model.ContactPhoneNumberName)
+                                @Html.EditorFor(model => model.ContactPhoneNumberName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ContactPhoneNumberName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                @Html.LabelFor(model => model.Address)
+                                @Html.TextAreaFor(model => model.Address, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-actions center">
+                            <button type="button" class="btn btn-warning mr-1">
+                                <i class="feather icon-x"></i> Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-check-square-o"></i> Save
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -22,7 +22,7 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
         // GET: Admin/RoleManagement
         public ActionResult Index()
         {
-            var Roles = _unitOfWork.Roles.GetAll();
+            var Roles = _unitOfWork.Roles.GetRolesWithStatus();
             return View(Roles);
         }
 

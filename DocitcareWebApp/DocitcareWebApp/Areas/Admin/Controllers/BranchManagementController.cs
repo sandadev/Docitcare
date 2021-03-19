@@ -3,15 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DocitcareWebApp.Core;
+using DocitcareWebApp.Core.ViewModels;
+using DocitcareWebApp.Core.Domain;
+using DocitcareWebApp.Persistence;
+using System.IO;
 
 namespace DocitcareWebApp.Areas.Admin.Controllers
 {
+  
     public class BranchManagementController : Controller
     {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public BranchManagementController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
         // GET: Admin/BranchManagement
         public ActionResult Index()
         {
-            return View();
+            var branches = _unitOfWork.Branch.GetBranchWithStatusCity();
+            return View(branches);
         }
 
         // GET: Admin/BranchManagement/Details/5
@@ -23,17 +36,24 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
         // GET: Admin/BranchManagement/Create
         public ActionResult Branch()
         {
-            return View();
+            var cities = _unitOfWork.APTSCities.GetAll();
+            var branchViewModel = new BranchViewModel
+            {
+                Cities = cities
+            };
+            return View(branchViewModel);
         }
 
         // POST: Admin/BranchManagement/Create
         [HttpPost]
-        public ActionResult Branch(FormCollection collection)
+        public ActionResult Branch(Branch branch, HttpPostedFileBase file)
         {
+            branch.EntityId = 2;
             try
             {
-                // TODO: Add insert logic here
-
+                branch.FilePath = Utilities.ImageUpload.UploadImages(file,branch.EntityId,branch.BranchName,"Branch");
+                _unitOfWork.Branch.Add(branch);
+                _unitOfWork.Complete();
                 return RedirectToAction("Index");
             }
             catch
@@ -43,19 +63,33 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
         }
 
         // GET: Admin/BranchManagement/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditBranch(int id)
         {
-            return View();
+            var cities = _unitOfWork.APTSCities.GetAll();
+            var branch = _unitOfWork.Branch.Get(id);
+            var branchViewModel = new BranchViewModel
+            {
+                Branch = branch,
+                Cities = cities
+            };
+            return View(branchViewModel);
         }
 
         // POST: Admin/BranchManagement/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditBranch(int id,Branch branch, HttpPostedFileBase file)
         {
             try
             {
-                // TODO: Add update logic here
-
+                var dbBranch = _unitOfWork.Branch.Get(id);
+                dbBranch.BranchName = branch.BranchName;
+                dbBranch.CityId = branch.CityId;
+                dbBranch.StatusID = branch.StatusID;
+                if(file!=null)
+                {
+                    dbBranch.FilePath = Utilities.ImageUpload.UploadImages(file, branch.EntityId, branch.BranchName, "Branch");
+                }
+                _unitOfWork.Complete();
                 return RedirectToAction("Index");
             }
             catch

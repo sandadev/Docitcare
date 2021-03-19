@@ -10,6 +10,14 @@ namespace DocitcareWebApp.Persistence
     {
         public DbSet<Role> Roles { get; set; }
         public DbSet<Status> Statuses { get; set; }
+
+        public DbSet<SuperAdminBranches> SuperAdminBranches { get; set; }
+
+        public DbSet<Entity> Entities { get; set; }
+        public DbSet<AP_TS_Cities> AP_TS_Cities { get; set; }
+        public DbSet<Branch> Branches { get; set; }
+
+
         public DocitcareDbContext()
             : base("name=DocitcareDbContext")
         {
