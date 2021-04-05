@@ -51,7 +51,34 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.1.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -135,6 +162,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="AreaAuthorizeAttribute.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BranchManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
@@ -144,22 +172,32 @@
     <Compile Include="Areas\Admin\Controllers\StaffManagementController.cs" />
     <Compile Include="Areas\SuperAdmin\Controllers\EntityController.cs" />
     <Compile Include="Areas\SuperAdmin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\SuperAdmin\Controllers\AccountController.cs" />
     <Compile Include="Areas\SuperAdmin\SuperAdminAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\Domain\AP_TS_Cities.cs" />
     <Compile Include="Core\Domain\Branch.cs" />
+    <Compile Include="Core\Domain\Department.cs" />
+    <Compile Include="Core\Domain\DepartmentBranches.cs" />
     <Compile Include="Core\Domain\Entity.cs" />
     <Compile Include="Core\Domain\Role.cs" />
     <Compile Include="Core\Domain\Status.cs" />
     <Compile Include="Core\Domain\SuperAdminBranches.cs" />
+    <Compile Include="Core\Domain\SuperAdminRegistration.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\IAPTSCitiesRepository.cs" />
     <Compile Include="Core\Repositories\IBranchRepository.cs" />
+    <Compile Include="Core\Repositories\IDepartmentBranchRepository.cs" />
+    <Compile Include="Core\Repositories\IDepartmentRepository.cs" />
     <Compile Include="Core\Repositories\IEntityRepository.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Core\Repositories\IRoleRepository.cs" />
     <Compile Include="Core\Repositories\IStatusRepository.cs" />
+    <Compile Include="Core\Repositories\ISuperAdminRegistrationRepository.cs" />
     <Compile Include="Core\ViewModels\BranchViewModel.cs" />
+    <Compile Include="Core\ViewModels\DepartmentViewModel.cs" />
+    <Compile Include="Core\ViewModels\RoleViewModel.cs" />
+    <Compile Include="Core\ViewModels\SuperAdminRegisterViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,16 +237,96 @@
     <Compile Include="Migrations\202103182117252_updateddataannotaions.Designer.cs">
       <DependentUpon>202103182117252_updateddataannotaions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103240808171_updatedrolesdataannotations.cs" />
+    <Compile Include="Migrations\202103240808171_updatedrolesdataannotations.Designer.cs">
+      <DependentUpon>202103240808171_updatedrolesdataannotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103240836276_updatedstatusinroleandstatusclass.cs" />
+    <Compile Include="Migrations\202103240836276_updatedstatusinroleandstatusclass.Designer.cs">
+      <DependentUpon>202103240836276_updatedstatusinroleandstatusclass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103240839119_updatedstatusname.cs" />
+    <Compile Include="Migrations\202103240839119_updatedstatusname.Designer.cs">
+      <DependentUpon>202103240839119_updatedstatusname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103241723185_createddepartmenttable.cs" />
+    <Compile Include="Migrations\202103241723185_createddepartmenttable.Designer.cs">
+      <DependentUpon>202103241723185_createddepartmenttable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103241736518_addedcolumnenityidinroletable.cs" />
+    <Compile Include="Migrations\202103241736518_addedcolumnenityidinroletable.Designer.cs">
+      <DependentUpon>202103241736518_addedcolumnenityidinroletable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103241749395_addedcolumnenityidinroletable1.cs" />
+    <Compile Include="Migrations\202103241749395_addedcolumnenityidinroletable1.Designer.cs">
+      <DependentUpon>202103241749395_addedcolumnenityidinroletable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103241755374_addedcolumnenityidinroletable2.cs" />
+    <Compile Include="Migrations\202103241755374_addedcolumnenityidinroletable2.Designer.cs">
+      <DependentUpon>202103241755374_addedcolumnenityidinroletable2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103261946369_deleting_BranchId_in_Department.cs" />
+    <Compile Include="Migrations\202103261946369_deleting_BranchId_in_Department.Designer.cs">
+      <DependentUpon>202103261946369_deleting_BranchId_in_Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103261953070_deleting_BranchId_in_Department1.cs" />
+    <Compile Include="Migrations\202103261953070_deleting_BranchId_in_Department1.Designer.cs">
+      <DependentUpon>202103261953070_deleting_BranchId_in_Department1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103281453118_updated_status_in_department.cs" />
+    <Compile Include="Migrations\202103281453118_updated_status_in_department.Designer.cs">
+      <DependentUpon>202103281453118_updated_status_in_department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103281459116_updated_status_in_department1.cs" />
+    <Compile Include="Migrations\202103281459116_updated_status_in_department1.Designer.cs">
+      <DependentUpon>202103281459116_updated_status_in_department1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103281825322_AddIdentity.cs" />
+    <Compile Include="Migrations\202103281825322_AddIdentity.Designer.cs">
+      <DependentUpon>202103281825322_AddIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103302055283_addingForeignkeyinDepartmenttableStatusID.cs" />
+    <Compile Include="Migrations\202103302055283_addingForeignkeyinDepartmenttableStatusID.Designer.cs">
+      <DependentUpon>202103302055283_addingForeignkeyinDepartmenttableStatusID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103302108063_deleteddepartmentbranchestable.cs" />
+    <Compile Include="Migrations\202103302108063_deleteddepartmentbranchestable.Designer.cs">
+      <DependentUpon>202103302108063_deleteddepartmentbranchestable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103302110044_deleteddepartmenttable.cs" />
+    <Compile Include="Migrations\202103302110044_deleteddepartmenttable.Designer.cs">
+      <DependentUpon>202103302110044_deleteddepartmenttable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103302115330_created_Department_Table.cs" />
+    <Compile Include="Migrations\202103302115330_created_Department_Table.Designer.cs">
+      <DependentUpon>202103302115330_created_Department_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103302120214_created_DepartmentBranches_Table.cs" />
+    <Compile Include="Migrations\202103302120214_created_DepartmentBranches_Table.Designer.cs">
+      <DependentUpon>202103302120214_created_DepartmentBranches_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104020558400_creating_SuperAdminRegistration_Table.cs" />
+    <Compile Include="Migrations\202104020558400_creating_SuperAdminRegistration_Table.Designer.cs">
+      <DependentUpon>202104020558400_creating_SuperAdminRegistration_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104020602017_creating_SuperAdminRegistration_Table1.cs" />
+    <Compile Include="Migrations\202104020602017_creating_SuperAdminRegistration_Table1.Designer.cs">
+      <DependentUpon>202104020602017_creating_SuperAdminRegistration_Table1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\DocitcareDbContext.cs" />
     <Compile Include="Persistence\Repositories\APTSCitiesRepository.cs" />
     <Compile Include="Persistence\Repositories\BranchRepository.cs" />
+    <Compile Include="Persistence\Repositories\DepartmentBranchesRepository.cs" />
+    <Compile Include="Persistence\Repositories\DepartmentRepository.cs" />
     <Compile Include="Persistence\Repositories\EntityRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
     <Compile Include="Persistence\Repositories\RoleRepository.cs" />
     <Compile Include="Persistence\Repositories\StatusRepository.cs" />
+    <Compile Include="Persistence\Repositories\SuperAdminRegistraionRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="Utilities\ImageUpload.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2921,6 +3039,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Branch\download.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -3290,7 +3409,6 @@
     <Content Include="Content\Theme\app-assets\vendors\css\forms\quill\fonts\KaTeX_Math-Italic.woff2" />
     <Content Include="Content\Theme\app-assets\vendors\js\charts\leaflet\data\us-states.json" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\RoleManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DepartmentManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DepartmentManagement\Department.cshtml" />
     <Content Include="Areas\Admin\Views\StaffManagement\Index.cshtml" />
@@ -3304,6 +3422,12 @@
     <Content Include="Areas\Admin\Views\BranchManagement\Branch.cshtml" />
     <Content Include="Areas\Admin\Views\BranchManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\BranchManagement\EditBranch.cshtml" />
+    <Content Include="Areas\Admin\Views\RoleManagement\NewRole.cshtml" />
+    <Content Include="Areas\Admin\Views\RoleManagement\Role.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\AdminAccount\Register.cshtml" />
+    <Content Include="Areas\Admin\Views\DepartmentManagement\EditDepartment.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\Account\Test.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3335,7 +3459,8 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Admin\" />
     <Folder Include="Areas\SuperAdmin\Data\" />
-    <Folder Include="Images\Branch\" />
+    <Folder Include="Areas\SuperAdmin\Views\Register\" />
+    <Folder Include="Images\Department\" />
     <Folder Include="Models\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
@@ -3379,6 +3504,63 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103182117252_updateddataannotaions.resx">
       <DependentUpon>202103182117252_updateddataannotaions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103240808171_updatedrolesdataannotations.resx">
+      <DependentUpon>202103240808171_updatedrolesdataannotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103240836276_updatedstatusinroleandstatusclass.resx">
+      <DependentUpon>202103240836276_updatedstatusinroleandstatusclass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103240839119_updatedstatusname.resx">
+      <DependentUpon>202103240839119_updatedstatusname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103241723185_createddepartmenttable.resx">
+      <DependentUpon>202103241723185_createddepartmenttable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103241736518_addedcolumnenityidinroletable.resx">
+      <DependentUpon>202103241736518_addedcolumnenityidinroletable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103241749395_addedcolumnenityidinroletable1.resx">
+      <DependentUpon>202103241749395_addedcolumnenityidinroletable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103241755374_addedcolumnenityidinroletable2.resx">
+      <DependentUpon>202103241755374_addedcolumnenityidinroletable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103261946369_deleting_BranchId_in_Department.resx">
+      <DependentUpon>202103261946369_deleting_BranchId_in_Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103261953070_deleting_BranchId_in_Department1.resx">
+      <DependentUpon>202103261953070_deleting_BranchId_in_Department1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103281453118_updated_status_in_department.resx">
+      <DependentUpon>202103281453118_updated_status_in_department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103281459116_updated_status_in_department1.resx">
+      <DependentUpon>202103281459116_updated_status_in_department1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103281825322_AddIdentity.resx">
+      <DependentUpon>202103281825322_AddIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103302055283_addingForeignkeyinDepartmenttableStatusID.resx">
+      <DependentUpon>202103302055283_addingForeignkeyinDepartmenttableStatusID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103302108063_deleteddepartmentbranchestable.resx">
+      <DependentUpon>202103302108063_deleteddepartmentbranchestable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103302110044_deleteddepartmenttable.resx">
+      <DependentUpon>202103302110044_deleteddepartmenttable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103302115330_created_Department_Table.resx">
+      <DependentUpon>202103302115330_created_Department_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103302120214_created_DepartmentBranches_Table.resx">
+      <DependentUpon>202103302120214_created_DepartmentBranches_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104020558400_creating_SuperAdminRegistration_Table.resx">
+      <DependentUpon>202104020558400_creating_SuperAdminRegistration_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104020602017_creating_SuperAdminRegistration_Table1.resx">
+      <DependentUpon>202104020602017_creating_SuperAdminRegistration_Table1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

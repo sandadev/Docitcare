@@ -7,6 +7,7 @@ using System.Web.Security;
 using DocitcareWebApp.Core;
 using DocitcareWebApp.Core.Domain;
 using DocitcareWebApp.Persistence;
+using DocitcareWebApp.Core.ViewModels;
 
 namespace DocitcareWebApp.Areas.Admin.Controllers
 {
@@ -20,10 +21,11 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
         }
 
         // GET: Admin/RoleManagement
-        public ActionResult Index()
+        public ActionResult Role()
         {
-            var Roles = _unitOfWork.Roles.GetRolesWithStatus();
-            return View(Roles);
+            var roles = _unitOfWork.Roles.GetRolesWithStatus();
+            ViewData["Roles"] = roles;
+            return View();
         }
 
         // GET: Admin/RoleManagement/Details/5
@@ -33,36 +35,39 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
         }
 
         // GET: Admin/RoleManagement/Create
-        public ActionResult Create()
+        public ActionResult NewRole()
         {
             return View();
         }
 
         // POST: Admin/RoleManagement/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult NewRole(Role role)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                role.StatusID = 1;
+                _unitOfWork.Roles.Add(role);
+                _unitOfWork.Complete();
+                return RedirectToAction("Role");
             }
             catch
             {
-                return View();
+                var roles = _unitOfWork.Roles.GetRolesWithStatus();
+                ViewData["Roles"] = roles;
+                return View("Role");
             }
         }
 
         // GET: Admin/RoleManagement/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditRole(int id)
         {
             return View();
         }
 
         // POST: Admin/RoleManagement/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditRole(int id, FormCollection collection)
         {
             try
             {

@@ -8,19 +8,25 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Admin/Views/BranchManagement/Branch.cshtml">
-      <publishTime>03/11/2021 00:32:59</publishTime>
+      <publishTime>03/19/2021 03:17:20</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/BranchManagement/EditBranch.cshtml">
+      <publishTime>03/19/2021 23:25:23</publishTime>
     </File>
     <File Include="Areas/Admin/Views/BranchManagement/Index.cshtml">
-      <publishTime>03/11/2021 20:25:19</publishTime>
+      <publishTime>03/19/2021 23:29:54</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Dashboard/Index.cshtml">
-      <publishTime>03/02/2021 21:21:07</publishTime>
+      <publishTime>04/03/2021 00:28:42</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DepartmentManagement/Department.cshtml">
-      <publishTime>03/11/2021 00:40:18</publishTime>
+      <publishTime>03/31/2021 02:45:11</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DepartmentManagement/EditDepartment.cshtml">
+      <publishTime>03/31/2021 20:51:37</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DepartmentManagement/Index.cshtml">
-      <publishTime>03/11/2021 01:25:36</publishTime>
+      <publishTime>03/31/2021 04:02:04</publishTime>
     </File>
     <File Include="Areas/Admin/Views/LoginPage/Login.cshtml">
       <publishTime>03/02/2021 13:09:09</publishTime>
@@ -28,8 +34,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Areas/Admin/Views/RoleManagement/Index.cshtml">
       <publishTime>03/11/2021 20:52:50</publishTime>
     </File>
+    <File Include="Areas/Admin/Views/RoleManagement/NewRole.cshtml">
+      <publishTime>03/24/2021 12:16:03</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/RoleManagement/Role.cshtml">
+      <publishTime>03/24/2021 14:12:54</publishTime>
+    </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
-      <publishTime>03/11/2021 01:22:28</publishTime>
+      <publishTime>03/24/2021 11:08:42</publishTime>
     </File>
     <File Include="Areas/Admin/Views/StaffManagement/Index.cshtml">
       <publishTime>03/11/2021 01:24:06</publishTime>
@@ -43,8 +55,17 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Areas/Admin/Views/_ViewStart.cshtml">
       <publishTime>03/01/2021 17:51:55</publishTime>
     </File>
+    <File Include="Areas/SuperAdmin/Views/Account/Login.cshtml">
+      <publishTime>04/02/2021 12:59:21</publishTime>
+    </File>
+    <File Include="Areas/SuperAdmin/Views/Account/Test.cshtml">
+      <publishTime>04/02/2021 13:19:47</publishTime>
+    </File>
+    <File Include="Areas/SuperAdmin/Views/AdminAccount/Register.cshtml">
+      <publishTime>03/30/2021 00:23:26</publishTime>
+    </File>
     <File Include="Areas/SuperAdmin/Views/Entity/EditEntity.cshtml">
-      <publishTime>03/16/2021 13:20:45</publishTime>
+      <publishTime>03/20/2021 02:41:20</publishTime>
     </File>
     <File Include="Areas/SuperAdmin/Views/Entity/Index.cshtml">
       <publishTime>03/16/2021 00:53:28</publishTime>
@@ -56,10 +77,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/11/2021 21:25:57</publishTime>
     </File>
     <File Include="Areas/SuperAdmin/Views/Shared/_Layout.cshtml">
-      <publishTime>03/11/2021 21:43:17</publishTime>
+      <publishTime>04/02/2021 19:46:04</publishTime>
     </File>
     <File Include="Areas/SuperAdmin/Views/web.config">
-      <publishTime>03/11/2021 21:22:42</publishTime>
+      <publishTime>04/02/2021 12:00:16</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>09/10/2013 16:29:20</publishTime>
@@ -68,10 +89,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/DocitcareWebApp.dll">
-      <publishTime>03/16/2021 23:06:41</publishTime>
+      <publishTime>04/03/2021 00:30:21</publishTime>
     </File>
     <File Include="bin/DocitcareWebApp.pdb">
-      <publishTime>03/16/2021 23:06:41</publishTime>
+      <publishTime>04/03/2021 00:30:21</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
@@ -79,14 +100,44 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
+    <File Include="bin/fr/Microsoft.AspNet.Identity.Owin.resources.dll">
+      <publishTime>11/25/2019 11:01:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>11/25/2019 10:57:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>11/25/2019 10:57:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>11/25/2019 10:57:50</publishTime>
+    </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 16:10:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>09/08/2020 20:51:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>09/08/2020 20:51:10</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>02/13/2015 13:16:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>02/13/2015 13:16:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>02/13/2015 13:16:40</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>07/25/2012 11:48:56</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>04/22/2019 01:06:16</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>11/13/2012 12:19:34</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>08/08/2018 05:38:48</publishTime>
@@ -239,7 +290,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/18/2018 19:38:10</publishTime>
     </File>
     <File Include="bin/System.Threading.Tasks.Extensions.dll">
-      <publishTime>02/26/2021 20:58:18</publishTime>
+      <publishTime>03/17/2021 01:10:02</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
@@ -9517,6 +9568,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Global.asax">
       <publishTime>02/26/2021 22:50:06</publishTime>
     </File>
+    <File Include="Images/Branch/download.png">
+      <publishTime>03/20/2021 00:19:35</publishTime>
+    </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>02/26/2021 22:50:17</publishTime>
     </File>
@@ -9578,7 +9632,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/26/2021 22:50:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/16/2021 23:06:42</publishTime>
+      <publishTime>04/03/2021 00:30:24</publishTime>
     </File>
   </ItemGroup>
 </Project>

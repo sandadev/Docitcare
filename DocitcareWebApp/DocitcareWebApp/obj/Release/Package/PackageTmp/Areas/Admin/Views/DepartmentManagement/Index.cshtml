@@ -1,4 +1,4 @@
-﻿
+﻿@model List<DocitcareWebApp.Core.Domain.Department>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -41,22 +41,36 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @*@foreach (var item in Model)
+                                @foreach (var item in Model)
                                     {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.RoleName)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Status.StatusID)
-                                            </td>
-                                            <td>
-                                                @Html.ActionLink("Edit", "Edit", new { id = item.RoleID }) |
-                                                @Html.ActionLink("Details", "Details", new { id = item.RoleID }) |
-                                                @Html.ActionLink("Delete", "Delete", new { id = item.RoleID })
-                                            </td>
-                                        </tr>
-                                    }*@
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DepartmentId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DepartmentName)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DepartmentCount)
+                                    </td>
+                                    <td>
+                                        @if (item.StatusID == 1)
+                                        {
+                                            <div class="badge badge-success">Active</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="badge badge-danger">Inactive</div>
+                                        }
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "EditDepartment", new { id = item.DepartmentId }) |
+                                        @*@Html.ActionLink("Details", "Details", new { id = item.RoleID }) |*@
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentId })
+                                    </td>
+                                </tr>
+                                    }
                             </tbody>
                         </table>
                     </div>

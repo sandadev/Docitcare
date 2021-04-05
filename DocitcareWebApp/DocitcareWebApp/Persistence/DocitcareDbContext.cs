@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using DocitcareWebApp.Core.Domain;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DocitcareWebApp.Persistence
 {
@@ -17,6 +18,12 @@ namespace DocitcareWebApp.Persistence
         public DbSet<AP_TS_Cities> AP_TS_Cities { get; set; }
         public DbSet<Branch> Branches { get; set; }
 
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<DepartmentBranches> DepartmentBranches { get; set; }
+
+        public DbSet<SuperAdminRegistration> SuperAdminRegistrations { get; set; }
+
+
 
         public DocitcareDbContext()
             : base("name=DocitcareDbContext")
@@ -26,6 +33,7 @@ namespace DocitcareWebApp.Persistence
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

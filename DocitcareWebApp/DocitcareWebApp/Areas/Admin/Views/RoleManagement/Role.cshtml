@@ -1,0 +1,113 @@
+﻿@using DocitcareWebApp.Core.Domain
+@model DocitcareWebApp.Core.Domain.Role
+@{
+    ViewBag.Title = "Role";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@{
+
+    IEnumerable<Role> roles = ViewData["Roles"] as IEnumerable<Role>;
+   
+}
+
+<!-- BEGIN: Content-->
+<!-- Modal details display -->
+<section id="modal">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Role List</h4>
+                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <button type="button" class="btn btn-primary btn-min-width mr-1 mb-1" data-toggle="modal" data-target="#bootstrap">
+                            Add Role
+                        </button>
+                    </div>
+
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body card-dashboard">
+                        <table class="table table-striped table-bordered dataex-res-modal dataex-res-configuration">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.RoleID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.RoleName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Status.StatusName)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in roles)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RoleID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RoleName)
+                                    </td>
+                                    <td>
+                                        @if (item.Status.StatusID == 1)
+                                        {
+                                            <div class="badge badge-success">@Html.DisplayFor(modelItem => item.Status.StatusName)</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="badge badge-danger">@Html.DisplayFor(modelItem => item.Status.StatusName)</div>
+                                        }
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.RoleID }) |
+                                        @*@Html.ActionLink("Details", "Details", new { id = item.RoleID }) |*@
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.RoleID })
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Modal details display -->
+<!-- END: Content-->
+<!-- Modal -->
+<div class="modal fade text-left" id="bootstrap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel35" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="myModalLabel35"> Add Role</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("NewRole", "RoleManagement", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="modal-body">
+                    <fieldset class="form-group floating-label-form-group">
+                        @Html.LabelFor(model => model.RoleName)<span _ngcontent-ykb-c82="" class="text-danger">*</span>
+                        @Html.EditorFor(model => model.RoleName, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Role Name" } })
+                        @Html.ValidationMessageFor(model => model.RoleName, "", new { @class = "text-danger" })
+                    </fieldset>
+                    <br>
+                </div>
+                <div class="modal-footer">
+                    <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="close">
+                    <input type="submit" class="btn btn-outline-primary btn-lg" value="Add">
+                </div>
+            }
+        </div>
+    </div>
+</div>

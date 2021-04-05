@@ -41,7 +41,8 @@ namespace DocitcareWebApp
                       "~/Content/Theme/app-assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js",
                       "~/Content/Theme/app-assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js",
                       "~/Content/Theme/app-assets/vendors/js/forms/select/select2.full.min.js",
-                      "~/Content/Theme/app-assets/js/scripts/forms/select/form-select2.js"
+                      "~/Content/Theme/app-assets/js/scripts/forms/select/form-select2.js",
+                       "~/Content/Theme/app-assets/js/scripts/modal/components-modal.js"
                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

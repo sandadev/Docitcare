@@ -13,6 +13,10 @@ namespace DocitcareWebApp.Core
         IAPTSCitiesRepository APTSCities { get; }
         IBranchRepository Branch { get; }
         IStatusRepository Status { get; }
+
+        IDepartmentRepository Department { get; }
+        IDepartmentBranchRepository DepartmentBranches { get; }
+        ISuperAdminRegistrationRepository SuperAdminRegistration { get; }
         int Complete();
     }
 }

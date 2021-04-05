@@ -1,0 +1,92 @@
+﻿@model DocitcareWebApp.Core.ViewModels.BranchViewModel
+@{
+    ViewBag.Title = "EditBranch";
+    Layout = "~/Areas/SuperAdmin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title" id="from-actions-top-bottom-center">Create Branch</h4>
+                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="feather icon-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="feather icon-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="feather icon-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collpase show">
+                <div class="card-body">
+                    @using (Html.BeginForm("EditBranch", "BranchManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Branch.BranchId)
+                    <div class="form-body">
+
+                        <div class="row">
+                            <div class="form-group col-12 mb-2">
+                                @Html.LabelFor(model => model.Branch.BranchName)
+                                @Html.EditorFor(model => model.Branch.BranchName, new { htmlAttributes = new { @class = "form-control col-12" } })
+                                @Html.ValidationMessageFor(model => model.Branch.BranchName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12 mb-2">
+                                @Html.LabelFor(model => model.Branch.CityId)
+                                @Html.DropDownListFor(s => s.Branch.CityId, new SelectList(Model.Cities, "CityId", "CityName"), "Select City", htmlAttributes: new { @class = "select2 form-control col-12" })
+                                @Html.ValidationMessageFor(model => model.Branch.CityId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12 mb-2">
+                                <label>Branch Status</label>
+                                <div class="input-group">
+                                    <div class="d-inline-block custom-control custom-radio mr-1">
+                                        @Html.RadioButtonFor(s => s.Branch.StatusID, "1", new { htmlAttributes = new { @class = "custom-control-input" } })
+                                        @Html.Label("Active", new { htmlAttributes = new { @class = "custom-control-label" } })
+                                    </div>
+                                    <div class="d-inline-block custom-control custom-radio">
+                                        @Html.RadioButtonFor(s => s.Branch.StatusID, "2")
+                                        @Html.Label("In Active", new { htmlAttributes = new { @class = "custom-control-label" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12 mb-2">
+                                <label>Select File</label>
+                                <label id="projectinput8" class="file center-block">
+                                    <input type="file" name="file" />
+                                    @Html.ValidationMessageFor(model => model.Branch.FilePath, "", new { @class = "text-danger" })
+                                    <span class="file-custom"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12 mb-2">
+                                <img class="img-thumbnail img-fluid" src="@Model.Branch.FilePath" itemprop="thumbnail" alt="Image description" />
+                            </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="form-actions center">
+                            <button type="button" class="btn btn-warning mr-1">
+                                <i class="feather icon-x"></i> Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-check-square-o"></i> Save
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

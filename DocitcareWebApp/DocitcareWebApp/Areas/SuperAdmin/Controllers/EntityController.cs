@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace DocitcareWebApp.Areas.SuperAdmin.Controllers
 {
+    [AreaAuthorize(area:"SuperAdmin")]
     public class EntityController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

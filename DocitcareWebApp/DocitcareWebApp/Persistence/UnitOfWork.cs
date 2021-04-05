@@ -19,6 +19,9 @@ namespace DocitcareWebApp.Persistence
             APTSCities = new APTSCitiesRepository(_context);
             Branch = new BranchRepository(_context);
             Status = new StatusRepository(_context);
+            Department = new DepartmentRepository(_context);
+            DepartmentBranches = new DepartmentBranchesRepository(_context);
+            SuperAdminRegistration = new SuperAdminRegistraionRepository(_context);
 
         }
         public IRoleRepository Roles { get; private set; }
@@ -26,6 +29,10 @@ namespace DocitcareWebApp.Persistence
         public IAPTSCitiesRepository APTSCities { get; private set; }
         public IBranchRepository Branch { get; private set; }
         public IStatusRepository Status { get; private set; }
+        public IDepartmentRepository Department { get; private set; }
+        public IDepartmentBranchRepository DepartmentBranches { get; private set; }
+
+        public ISuperAdminRegistrationRepository SuperAdminRegistration { get; private set; }
         public int Complete()
         {
             return _context.SaveChanges();
