@@ -85,3 +85,7 @@ D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareW
 D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareWebApp.dll
 D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareWebApp.pdb
 D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareWebApp.csprojAssemblyReference.cache
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareWebApp.Migrations.creating_CategoryTable.resources
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareWebApp.Migrations.creating_CategoryTable1.resources
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareWebApp.Migrations.creating_UserTable.resources
+D:\Hameed\Project\Docitcare\DocitcareWebApp\DocitcareWebApp\obj\Debug\DocitcareWebApp.Migrations.creating_UserTable1.resources

@@ -167,6 +167,7 @@
     <Compile Include="Areas\Admin\Controllers\BranchManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DepartmentManagementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DoctorManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginPageController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffManagementController.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\Domain\AP_TS_Cities.cs" />
     <Compile Include="Core\Domain\Branch.cs" />
+    <Compile Include="Core\Domain\Category.cs" />
     <Compile Include="Core\Domain\Department.cs" />
     <Compile Include="Core\Domain\DepartmentBranches.cs" />
     <Compile Include="Core\Domain\Entity.cs" />
@@ -184,6 +186,7 @@
     <Compile Include="Core\Domain\Status.cs" />
     <Compile Include="Core\Domain\SuperAdminBranches.cs" />
     <Compile Include="Core\Domain\SuperAdminRegistration.cs" />
+    <Compile Include="Core\Domain\User.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\IAPTSCitiesRepository.cs" />
     <Compile Include="Core\Repositories\IBranchRepository.cs" />
@@ -194,6 +197,7 @@
     <Compile Include="Core\Repositories\IRoleRepository.cs" />
     <Compile Include="Core\Repositories\IStatusRepository.cs" />
     <Compile Include="Core\Repositories\ISuperAdminRegistrationRepository.cs" />
+    <Compile Include="Core\Repositories\IUserRepository.cs" />
     <Compile Include="Core\ViewModels\BranchViewModel.cs" />
     <Compile Include="Core\ViewModels\DepartmentViewModel.cs" />
     <Compile Include="Core\ViewModels\RoleViewModel.cs" />
@@ -313,6 +317,22 @@
     <Compile Include="Migrations\202104020602017_creating_SuperAdminRegistration_Table1.Designer.cs">
       <DependentUpon>202104020602017_creating_SuperAdminRegistration_Table1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104051926245_creating_CategoryTable.cs" />
+    <Compile Include="Migrations\202104051926245_creating_CategoryTable.Designer.cs">
+      <DependentUpon>202104051926245_creating_CategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104051931081_creating_CategoryTable1.cs" />
+    <Compile Include="Migrations\202104051931081_creating_CategoryTable1.Designer.cs">
+      <DependentUpon>202104051931081_creating_CategoryTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104052015152_creating_UserTable.cs" />
+    <Compile Include="Migrations\202104052015152_creating_UserTable.Designer.cs">
+      <DependentUpon>202104052015152_creating_UserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104060430337_creating_UserTable1.cs" />
+    <Compile Include="Migrations\202104060430337_creating_UserTable1.Designer.cs">
+      <DependentUpon>202104060430337_creating_UserTable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\DocitcareDbContext.cs" />
     <Compile Include="Persistence\Repositories\APTSCitiesRepository.cs" />
@@ -324,6 +344,7 @@
     <Compile Include="Persistence\Repositories\RoleRepository.cs" />
     <Compile Include="Persistence\Repositories\StatusRepository.cs" />
     <Compile Include="Persistence\Repositories\SuperAdminRegistraionRepository.cs" />
+    <Compile Include="Persistence\Repositories\UserRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -3458,6 +3479,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Admin\" />
+    <Folder Include="Areas\Admin\Views\DoctorManagement\" />
     <Folder Include="Areas\SuperAdmin\Data\" />
     <Folder Include="Areas\SuperAdmin\Views\Register\" />
     <Folder Include="Images\Department\" />
@@ -3561,6 +3583,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104020602017_creating_SuperAdminRegistration_Table1.resx">
       <DependentUpon>202104020602017_creating_SuperAdminRegistration_Table1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104051926245_creating_CategoryTable.resx">
+      <DependentUpon>202104051926245_creating_CategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104051931081_creating_CategoryTable1.resx">
+      <DependentUpon>202104051931081_creating_CategoryTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104052015152_creating_UserTable.resx">
+      <DependentUpon>202104052015152_creating_UserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104060430337_creating_UserTable1.resx">
+      <DependentUpon>202104060430337_creating_UserTable1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

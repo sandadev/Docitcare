@@ -6,29 +6,29 @@ using System.Web.Mvc;
 
 namespace DocitcareWebApp.Areas.Admin.Controllers
 {
-    public class StaffManagementController : Controller
+    public class DoctorManagementController : Controller
     {
-        // GET: Admin/StaffManagement
+        // GET: Admin/DoctorManagement
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Admin/StaffManagement/Details/5
+        // GET: Admin/DoctorManagement/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Admin/StaffManagement/Create
-        public ActionResult Staff()
+        // GET: Admin/DoctorManagement/Create
+        public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/StaffManagement/Create
+        // POST: Admin/DoctorManagement/Create
         [HttpPost]
-        public ActionResult Staff(FormCollection collection)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
@@ -42,13 +42,13 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin/StaffManagement/Edit/5
+        // GET: Admin/DoctorManagement/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Admin/StaffManagement/Edit/5
+        // POST: Admin/DoctorManagement/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +64,13 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin/StaffManagement/Delete/5
+        // GET: Admin/DoctorManagement/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Admin/StaffManagement/Delete/5
+        // POST: Admin/DoctorManagement/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
