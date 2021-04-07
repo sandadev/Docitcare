@@ -23,6 +23,9 @@ namespace DocitcareWebApp.Persistence
             DepartmentBranches = new DepartmentBranchesRepository(_context);
             SuperAdminRegistration = new SuperAdminRegistraionRepository(_context);
             User = new UserRepository(_context);
+            UserBranches = new UserBranchRepository(_context);
+            Category = new CategoryRepository(_context);
+            
 
         }
         public IRoleRepository Roles { get; private set; }
@@ -34,6 +37,8 @@ namespace DocitcareWebApp.Persistence
         public IDepartmentBranchRepository DepartmentBranches { get; private set; }
         public ISuperAdminRegistrationRepository SuperAdminRegistration { get; private set; }
         public IUserRepository User { get; private set; }
+        public IUserBranchRepository UserBranches { get; private set; }
+         public ICategoryRepository Category { get; private set; }
         public int Complete()
         {
             return _context.SaveChanges();

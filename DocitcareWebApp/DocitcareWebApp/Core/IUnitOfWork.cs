@@ -18,6 +18,8 @@ namespace DocitcareWebApp.Core
         IDepartmentBranchRepository DepartmentBranches { get; }
         ISuperAdminRegistrationRepository SuperAdminRegistration { get; }
         IUserRepository User { get; }
+        IUserBranchRepository UserBranches { get; }
+        ICategoryRepository Category { get; }
         int Complete();
     }
 }

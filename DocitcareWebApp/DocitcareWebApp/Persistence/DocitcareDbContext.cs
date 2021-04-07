@@ -24,7 +24,8 @@ namespace DocitcareWebApp.Persistence
         public DbSet<SuperAdminRegistration> SuperAdminRegistrations { get; set; }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserDetails> Users { get; set; }
+        public DbSet<UserBranches> UserBranches { get; set; }
 
 
 

@@ -6,8 +6,8 @@ using DocitcareWebApp.Core.Domain;
 
 namespace DocitcareWebApp.Core.Repositories
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IUserRepository : IRepository<UserDetails>
     {
-
+        UserDetails ValidateCredentails(UserDetails model);
     }
 }

@@ -164,6 +164,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="AreaAuthorizeAttribute.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\BranchManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DepartmentManagementController.cs" />
@@ -186,10 +187,12 @@
     <Compile Include="Core\Domain\Status.cs" />
     <Compile Include="Core\Domain\SuperAdminBranches.cs" />
     <Compile Include="Core\Domain\SuperAdminRegistration.cs" />
-    <Compile Include="Core\Domain\User.cs" />
+    <Compile Include="Core\Domain\UserDetails.cs" />
+    <Compile Include="Core\Domain\UserBranches.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\IAPTSCitiesRepository.cs" />
     <Compile Include="Core\Repositories\IBranchRepository.cs" />
+    <Compile Include="Core\Repositories\ICategoryRepository.cs" />
     <Compile Include="Core\Repositories\IDepartmentBranchRepository.cs" />
     <Compile Include="Core\Repositories\IDepartmentRepository.cs" />
     <Compile Include="Core\Repositories\IEntityRepository.cs" />
@@ -197,11 +200,14 @@
     <Compile Include="Core\Repositories\IRoleRepository.cs" />
     <Compile Include="Core\Repositories\IStatusRepository.cs" />
     <Compile Include="Core\Repositories\ISuperAdminRegistrationRepository.cs" />
+    <Compile Include="Core\Repositories\IUserBranchRepository.cs" />
     <Compile Include="Core\Repositories\IUserRepository.cs" />
     <Compile Include="Core\ViewModels\BranchViewModel.cs" />
     <Compile Include="Core\ViewModels\DepartmentViewModel.cs" />
     <Compile Include="Core\ViewModels\RoleViewModel.cs" />
+    <Compile Include="Core\ViewModels\StaffListViewModel.cs" />
     <Compile Include="Core\ViewModels\SuperAdminRegisterViewModel.cs" />
+    <Compile Include="Core\ViewModels\UserViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -333,10 +339,43 @@
     <Compile Include="Migrations\202104060430337_creating_UserTable1.Designer.cs">
       <DependentUpon>202104060430337_creating_UserTable1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104061920547_Created_Email_Coloumn_User_Table.cs" />
+    <Compile Include="Migrations\202104061920547_Created_Email_Coloumn_User_Table.Designer.cs">
+      <DependentUpon>202104061920547_Created_Email_Coloumn_User_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104062007276_Creating_UserBranch_Table.cs" />
+    <Compile Include="Migrations\202104062007276_Creating_UserBranch_Table.Designer.cs">
+      <DependentUpon>202104062007276_Creating_UserBranch_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104062035061_updated_UserTable_name.cs" />
+    <Compile Include="Migrations\202104062035061_updated_UserTable_name.Designer.cs">
+      <DependentUpon>202104062035061_updated_UserTable_name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104070718541_Deleted_row_User_Details_CategoryId.cs" />
+    <Compile Include="Migrations\202104070718541_Deleted_row_User_Details_CategoryId.Designer.cs">
+      <DependentUpon>202104070718541_Deleted_row_User_Details_CategoryId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104070756300_Deleted_row_User_Details_depatid.cs" />
+    <Compile Include="Migrations\202104070756300_Deleted_row_User_Details_depatid.Designer.cs">
+      <DependentUpon>202104070756300_Deleted_row_User_Details_depatid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104070757106_adding_column_User_Details_depatid.cs" />
+    <Compile Include="Migrations\202104070757106_adding_column_User_Details_depatid.Designer.cs">
+      <DependentUpon>202104070757106_adding_column_User_Details_depatid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104070913040_Deleted_row_User_Details_departmentid.cs" />
+    <Compile Include="Migrations\202104070913040_Deleted_row_User_Details_departmentid.Designer.cs">
+      <DependentUpon>202104070913040_Deleted_row_User_Details_departmentid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104070914266_addded_departmentid_userdetails.cs" />
+    <Compile Include="Migrations\202104070914266_addded_departmentid_userdetails.Designer.cs">
+      <DependentUpon>202104070914266_addded_departmentid_userdetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\DocitcareDbContext.cs" />
     <Compile Include="Persistence\Repositories\APTSCitiesRepository.cs" />
     <Compile Include="Persistence\Repositories\BranchRepository.cs" />
+    <Compile Include="Persistence\Repositories\CategoryRepository.cs" />
     <Compile Include="Persistence\Repositories\DepartmentBranchesRepository.cs" />
     <Compile Include="Persistence\Repositories\DepartmentRepository.cs" />
     <Compile Include="Persistence\Repositories\EntityRepository.cs" />
@@ -344,6 +383,7 @@
     <Compile Include="Persistence\Repositories\RoleRepository.cs" />
     <Compile Include="Persistence\Repositories\StatusRepository.cs" />
     <Compile Include="Persistence\Repositories\SuperAdminRegistraionRepository.cs" />
+    <Compile Include="Persistence\Repositories\UserBranchRepository.cs" />
     <Compile Include="Persistence\Repositories\UserRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -3433,7 +3473,6 @@
     <Content Include="Areas\Admin\Views\DepartmentManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DepartmentManagement\Department.cshtml" />
     <Content Include="Areas\Admin\Views\StaffManagement\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\StaffManagement\Staff.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\web.config" />
     <Content Include="Areas\SuperAdmin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\Login\Index.cshtml" />
@@ -3449,6 +3488,9 @@
     <Content Include="Areas\Admin\Views\DepartmentManagement\EditDepartment.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\Account\Login.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\Account\Test.cshtml" />
+    <Content Include="Areas\Admin\Views\StaffManagement\Staff.cshtml" />
+    <Content Include="Areas\Admin\Views\StaffManagement\EditStaff.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3595,6 +3637,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104060430337_creating_UserTable1.resx">
       <DependentUpon>202104060430337_creating_UserTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104061920547_Created_Email_Coloumn_User_Table.resx">
+      <DependentUpon>202104061920547_Created_Email_Coloumn_User_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104062007276_Creating_UserBranch_Table.resx">
+      <DependentUpon>202104062007276_Creating_UserBranch_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104062035061_updated_UserTable_name.resx">
+      <DependentUpon>202104062035061_updated_UserTable_name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104070718541_Deleted_row_User_Details_CategoryId.resx">
+      <DependentUpon>202104070718541_Deleted_row_User_Details_CategoryId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104070756300_Deleted_row_User_Details_depatid.resx">
+      <DependentUpon>202104070756300_Deleted_row_User_Details_depatid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104070757106_adding_column_User_Details_depatid.resx">
+      <DependentUpon>202104070757106_adding_column_User_Details_depatid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104070913040_Deleted_row_User_Details_departmentid.resx">
+      <DependentUpon>202104070913040_Deleted_row_User_Details_departmentid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104070914266_addded_departmentid_userdetails.resx">
+      <DependentUpon>202104070914266_addded_departmentid_userdetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

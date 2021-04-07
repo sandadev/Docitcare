@@ -19,7 +19,7 @@ namespace DocitcareWebApp
 
             if (area == "Admin")
             {
-                loginUrl = "~/Admin/LoginPage/Login";
+                loginUrl = "~/Admin/Account/Login";
             }
             else if (area == "SuperAdmin")
             {

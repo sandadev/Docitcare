@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using DocitcareWebApp.Core.Domain;
 
 namespace DocitcareWebApp.Core.Domain
 {
-    public class User
+    public class UserDetails
     {
         [Key]
         [Required]
@@ -28,6 +29,9 @@ namespace DocitcareWebApp.Core.Domain
         [Required]
         [Display(Name = "Gender")]
         public int Gender { get; set; }
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
         [Required]
         [Display(Name = "Martial Status")]
         public int MartialStatus { get; set; }
@@ -96,19 +100,16 @@ namespace DocitcareWebApp.Core.Domain
         public Role Role { get; set; }
 
         [Required]
-        [Display(Name ="Department")]
-        public int DepartmentId { get; set; }
-
-        public Department Department { get; set; }
-        [Required]
         public int EntityId { get; set; }
 
         public Entity Entity { get; set; }
 
-        public int Id{ get; set; }
-        public Category Category { get; set; }
+        [Required]
+        [Display(Name = "Department Id")]
+        public int DepartmentId { get; set; }
 
-
+        [NotMapped]
+        public string[] SelectedBrachesArray { get; set; }
 
 
 
