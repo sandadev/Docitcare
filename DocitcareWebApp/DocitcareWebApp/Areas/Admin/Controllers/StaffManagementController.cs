@@ -75,14 +75,15 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
 
         // POST: Admin/StaffManagement/Create
         [HttpPost]
-        public ActionResult Staff(UserDetails userDetails)
+        public ActionResult Staff(UserDetails userDetails,string dob)
         {
             try
             {
-                userDetails.EntityId = 2;
+                userDetails.EntityId = (int)Session["entity"];
                 userDetails.DepartmentId = 0;
-                userDetails.CreatedDate = DateTime.Now;
-                userDetails.UpadtedDate = DateTime.Now;
+                userDetails.DateOfBirth = DateTime.ParseExact(dob, "dd/MM/yyyy", null);
+                userDetails.CreatedDate = DateTime.Today;
+                userDetails.UpadtedDate = DateTime.Today;
                 userDetails.Password = "admin@123";
                 _unitOfWork.User.Add(userDetails);
                 _unitOfWork.Complete();
@@ -109,6 +110,7 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
         public ActionResult EditStaff(int id)
         {
             var userDetail = _unitOfWork.User.Get(id);
+            string dob = userDetail.DateOfBirth.ToString("dd/MM/yyyy");
             var userBranchesList = _unitOfWork.UserBranches.Find(x => x.UserId == id);
             string[] branchArray = new string[10];
             var listCount = 0;
@@ -124,7 +126,8 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
                 Roles = _unitOfWork.Roles.GetAll(),
                 Categories = _unitOfWork.Category.GetAll(),
                 SelectedBrachesArray=branchArray,
-                UserDetails=userDetail
+                UserDetails=userDetail,
+                DOB=dob
 
             };
             return View(staffViewModel);
@@ -132,14 +135,14 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
 
         // POST: Admin/StaffManagement/Edit/5
         [HttpPost]
-        public ActionResult EditStaff(int id, UserDetails userDetails)
+        public ActionResult EditStaff(int id, UserDetails userDetails,string dob)
         {
             try
             {
                 var dbStaff = _unitOfWork.User.Get(id);
                 dbStaff.FirstName = userDetails.FirstName;
                 dbStaff.LastName = userDetails.LastName;
-                dbStaff.DateOfBirth = userDetails.DateOfBirth;
+                dbStaff.DateOfBirth = DateTime.ParseExact(dob, "dd/MM/yyyy", null);
                 dbStaff.Email = userDetails.Email;
                 dbStaff.TelephoneNumber1 = userDetails.TelephoneNumber1;
                 dbStaff.TelephoneNumber2 = userDetails.TelephoneNumber2;
@@ -153,6 +156,7 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
                 dbStaff.State = userDetails.State;
                 dbStaff.City = userDetails.City;
                 dbStaff.Pincode = userDetails.Pincode;
+                dbStaff.UpadtedDate = DateTime.Today;
                 _unitOfWork.Complete();
                 //adding branches
                 var branches = _unitOfWork.UserBranches.GetBranchCount(id);
@@ -172,7 +176,7 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
                 return View();
             }

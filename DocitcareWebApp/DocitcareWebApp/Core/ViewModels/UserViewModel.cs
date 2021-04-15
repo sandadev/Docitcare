@@ -11,10 +11,12 @@ namespace DocitcareWebApp.Core.ViewModels
         public UserDetails UserDetails { get; set; }
         public IEnumerable<Role> Roles { get; set; }
         public IEnumerable<Branch> Branches { get; set; }
-
         public IEnumerable<Category> Categories { get; set; }
         public string[] SelectedBrachesArray { get; set; }
         public IEnumerable<UserBranches> BranchList { get; set; }
 
+        public IEnumerable<Department> Departments { get; set; }
+
+        public string DOB { get; set; }
     }
 }

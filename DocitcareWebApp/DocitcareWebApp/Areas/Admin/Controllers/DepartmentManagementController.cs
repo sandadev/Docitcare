@@ -10,6 +10,7 @@ using DocitcareWebApp.Core.Domain;
 
 namespace DocitcareWebApp.Areas.Admin.Controllers
 {
+    [AreaAuthorize(area: "Admin")]
     public class DepartmentManagementController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -60,7 +61,7 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Department(Department department, HttpPostedFileBase file)
         {
-            department.EntityId = 2;
+            department.EntityId = (int)Session["entity"];
             try
             {
                 if (file != null)
@@ -118,7 +119,7 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult EditDepartment(int id, Department department, HttpPostedFileBase file)
         {
-            department.EntityId = 2;
+            department.EntityId = (int)Session["entity"];
             try
             {
                 var dbDepartment = _unitOfWork.Department.Get(id);

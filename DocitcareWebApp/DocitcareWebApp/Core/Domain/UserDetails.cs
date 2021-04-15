@@ -105,7 +105,7 @@ namespace DocitcareWebApp.Core.Domain
         public Entity Entity { get; set; }
 
         [Required]
-        [Display(Name = "Department Id")]
+        [Display(Name = "Department Name")]
         public int DepartmentId { get; set; }
 
         [NotMapped]

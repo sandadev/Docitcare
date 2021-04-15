@@ -33,6 +33,7 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
                 if (!string.IsNullOrEmpty(returnUrl))
                 {
                     FormsAuthentication.SetAuthCookie(isValid.FirstName, true);
+                    Session["entity"] = isValid.EntityId;
                     return Redirect(returnUrl);
                 }
                 else

@@ -9,7 +9,9 @@ namespace DocitcareWebApp
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/moment.js",
+                        "~/Scripts/jquery-3.4.1.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -42,7 +44,9 @@ namespace DocitcareWebApp
                       "~/Content/Theme/app-assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js",
                       "~/Content/Theme/app-assets/vendors/js/forms/select/select2.full.min.js",
                       "~/Content/Theme/app-assets/js/scripts/forms/select/form-select2.js",
-                       "~/Content/Theme/app-assets/js/scripts/modal/components-modal.js"
+                       "~/Content/Theme/app-assets/js/scripts/modal/components-modal.js",
+                       "~/Scripts/bootstrap-datetimepicker.js"
+
                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -68,7 +72,8 @@ namespace DocitcareWebApp
                       "~/Content/Theme/app-assets/vendors/css/tables/extensions/buttons.dataTables.min.css",
                       "~/Content/Theme/app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css",
                       "~/Content/Theme/app-assets/vendors/css/tables/extensions/fixedHeader.dataTables.min.css",
-                      "~/Content/Theme/app-assets/vendors/css/forms/selects/select2.min.css"
+                      "~/Content/Theme/app-assets/vendors/css/forms/selects/select2.min.css",
+                      "~/Content/bootstrap-datetimepicker.css"
 
                       ));
 

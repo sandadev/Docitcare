@@ -11,6 +11,7 @@ using DocitcareWebApp.Core.ViewModels;
 
 namespace DocitcareWebApp.Areas.Admin.Controllers
 {
+    [AreaAuthorize(area: "Admin")]
     public class RoleManagementController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -47,6 +48,7 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
             try
             {
                 role.StatusID = 1;
+                role.EntityId = 2;
                 _unitOfWork.Roles.Add(role);
                 _unitOfWork.Complete();
                 return RedirectToAction("Role");

@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DocitcareWebApp.Core;
+using DocitcareWebApp.Core.Domain;
+using DocitcareWebApp.Core.ViewModels;
+using DocitcareWebApp.Persistence;
 
 namespace DocitcareWebApp.Areas.Admin.Controllers
 {
     public class DoctorManagementController : Controller
     {
-        // GET: Admin/DoctorManagement
+        private readonly IUnitOfWork _unitOfWork;
+        public DoctorManagementController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
         public ActionResult Index()
         {
             return View();
@@ -21,9 +29,16 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
         }
 
         // GET: Admin/DoctorManagement/Create
-        public ActionResult Create()
+        public ActionResult Doctor()
         {
-            return View();
+            var doctorViewModel = new UserViewModel()
+            {
+                Branches = _unitOfWork.Branch.GetAll(),
+                Roles = _unitOfWork.Roles.GetAll(),
+                Categories = _unitOfWork.Category.GetAll(),
+                Departments=_unitOfWork.Department.GetAll()
+            };
+            return View(doctorViewModel);
         }
 
         // POST: Admin/DoctorManagement/Create

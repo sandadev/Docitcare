@@ -11,7 +11,7 @@ using System.IO;
 
 namespace DocitcareWebApp.Areas.Admin.Controllers
 {
-  
+    [AreaAuthorize(area: "Admin")]
     public class BranchManagementController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -48,7 +48,7 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Branch(Branch branch, HttpPostedFileBase file)
         {
-            branch.EntityId = 2;
+            branch.EntityId = (int)Session["entity"];
             try
             {
                 branch.FilePath = Utilities.ImageUpload.UploadImages(file,branch.EntityId,branch.BranchName,"Branch");
