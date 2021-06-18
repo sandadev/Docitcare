@@ -25,8 +25,18 @@ namespace DocitcareWebApp
             {
                 loginUrl = "~/SuperAdmin/Account/Login";
             }
+           
             filterContext.Result = new RedirectResult(loginUrl + "?returnUrl=" + filterContext.HttpContext.Request.Url.PathAndQuery);
         }
+
+        protected override bool AuthorizeCore(HttpContextBase httpContext)
+        {
+            if (httpContext.Session == null || httpContext.Session["entity"] ==null || httpContext.Session["staffid"]==null)
+                return false;
+
+            return base.AuthorizeCore(httpContext);
+        }
+
 
     }
 }

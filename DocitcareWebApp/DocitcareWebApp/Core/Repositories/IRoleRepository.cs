@@ -6,5 +6,6 @@ namespace DocitcareWebApp.Core.Repositories
     public interface IRoleRepository: IRepository<Role>
     {
         IEnumerable<Role> GetRolesWithStatus();
+        int GetRoleIdByRoleName(string roleName);
     }
 }

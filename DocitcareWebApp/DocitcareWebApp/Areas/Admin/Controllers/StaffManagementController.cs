@@ -81,7 +81,9 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
             {
                 userDetails.EntityId = (int)Session["entity"];
                 userDetails.DepartmentId = 0;
-                userDetails.DateOfBirth = DateTime.ParseExact(dob, "dd/MM/yyyy", null);
+                var dt=DateTime.ParseExact(dob, "dd/MM/yyyy", null);
+                dt = Convert.ToDateTime(dt, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat);
+                userDetails.DateOfBirth = dt;
                 userDetails.CreatedDate = DateTime.Today;
                 userDetails.UpadtedDate = DateTime.Today;
                 userDetails.Password = "admin@123";
@@ -142,7 +144,10 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
                 var dbStaff = _unitOfWork.User.Get(id);
                 dbStaff.FirstName = userDetails.FirstName;
                 dbStaff.LastName = userDetails.LastName;
-                dbStaff.DateOfBirth = DateTime.ParseExact(dob, "dd/MM/yyyy", null);
+                //dbStaff.DateOfBirth = DateTime.ParseExact(dob, "dd/MM/yyyy", null);
+                var dt = DateTime.ParseExact(dob, "dd/MM/yyyy", null);
+                dt = Convert.ToDateTime(dt, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat);
+                dbStaff.DateOfBirth = dt;
                 dbStaff.Email = userDetails.Email;
                 dbStaff.TelephoneNumber1 = userDetails.TelephoneNumber1;
                 dbStaff.TelephoneNumber2 = userDetails.TelephoneNumber2;

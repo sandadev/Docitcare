@@ -1,0 +1,6 @@
+2021-06-10 02:42:02,063 [7] INFO  DocitcareWebApp.Areas.Admin.Controllers.AccountController [(null)] - Hi I am log4net Info Level
+2021-06-10 02:47:55,090 [6] INFO  DocitcareWebApp.Areas.Admin.Controllers.AccountController [(null)] - Hi I am log4net Info Level
+2021-06-10 03:19:55,209 [6] INFO  DocitcareWebApp.Areas.Admin.Controllers.AccountController [(null)] - Hi I am log4net Info Level
+2021-06-10 19:06:26,874 [7] INFO  DocitcareWebApp.Areas.Admin.Controllers.AccountController [(null)] - Hi I am log4net Info Level
+2021-06-10 21:41:10,665 [6] INFO  DocitcareWebApp.Areas.Admin.Controllers.AccountController [(null)] - Hi I am log4net Info Level
+2021-06-10 23:58:43,179 [6] INFO  DocitcareWebApp.Areas.Admin.Controllers.AccountController [(null)] - Hi I am log4net Info Level

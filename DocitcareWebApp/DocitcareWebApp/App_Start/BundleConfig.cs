@@ -23,6 +23,13 @@ namespace DocitcareWebApp
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
+
+            // Docitweb custome scripts
+            bundles.Add(new ScriptBundle("~/bundles/docitweb").Include(
+                 "~/Content/Theme/app-assets/DocitScripts/SlotCreation.js",
+                  "~/Content/Theme/app-assets/DocitScripts/BookAppointment.js",
+                  "~/Content/Theme/app-assets/DocitScripts/Appointment.js"
+                ));
             //vendor theme js
 
             bundles.Add(new ScriptBundle("~/bundles/vendor").Include(
@@ -52,6 +59,7 @@ namespace DocitcareWebApp
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
+                       "~/Content/Theme/appointment_nanda.css",
                       "~/Content/Theme/app-assets/css/bootstrap.css",
                       "~/Content/Theme/app-assets/css/bootstrap-extended.css",
                       "~/Content/Theme/app-assets/vendors/css/vendors.min.css",
@@ -63,6 +71,7 @@ namespace DocitcareWebApp
                       "~/Content/Theme/app-assets/css/core/colors/palette-gradient.css",
                       "~/Content/Theme/app-assets/css/core/menu/menu-types/vertical-menu.css",
                       "~/Content/Theme/app-assets/fonts/simple-line-icons/style.min.css",
+                       "~/Content/Theme/app-assets/fonts/font-awesome/css/font-awesome.min.css",
                       "~/Content/Theme/app-assets/css/pages/card-statistics.css",
                       "~/Content/Theme/app-assets/css/pages/vertical-timeline.css",
                       "~/Content/Theme/assets/css/style.css",

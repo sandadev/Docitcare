@@ -1,0 +1,209 @@
+﻿@model DocitcareWebApp.Core.Domain.SlotCreation 
+@{
+    ViewBag.Title = "NewSlot";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row match-height">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title" id="from-actions-top-left">Create Slot</h4>
+                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="feather icon-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="feather icon-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="feather icon-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collpase show">
+                <div class="card-body">
+                    @*<form class="form form-horizontal" id="slotForm" action="@Url.Action("NewSlot","SlotCreation")" method="post">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                    <form>
+                        <div class="form-body">
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="timesheetinput1">Doctor</label>
+                                <div class="col-md-4">
+                                    <div class="position-relative has-icon-left">
+                                        <select class="select2-icons form-control" id="ddlDoctor">
+                                            <option data-icon="fa fa-user-md" value="0">----Select Doctor----</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="timesheetinput1">Department</label>
+                                <div class="col-md-4">
+                                    <div class="position-relative has-icon-left">
+                                        <label id="lblDepartmentName"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="timesheetinput1">Branch</label>
+                                <div class="col-md-4">
+                                    <div class="position-relative has-icon-left">
+                                        <select class="select2-icons form-control" id="ddlBranchList">
+                                            <option data-icon="fa fa-user-md">----Select Branch----</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="timesheetinput3">Start Date</label>
+                                <div class="col-md-9">
+                                    <div class="position-relative has-icon-left">
+                                        <input type="text" id="txtStartDate" class="form-control datepicker" name="date">
+                                        <div class="form-control-position">
+                                            <i class="fa fa-calendar-o"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="timesheetinput3">End Date</label>
+                                <div class="col-md-9">
+                                    <div class="position-relative has-icon-left">
+                                        <input type="text" id="txtEndDate" class="form-control datepicker" name="date">
+                                        <div class="form-control-position">
+                                            <i class="fa fa-calendar-o"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="timesheetinput5">Start Time</label>
+                                <div class="col-md-9">
+                                    <div class="position-relative has-icon-left">
+                                        <input type="time" id="txtStartTime" class="form-control" name="starttime">
+                                        <div class="form-control-position">
+                                            <i class="feather icon-clock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="timesheetinput6">End Time</label>
+                                <div class="col-md-9">
+                                    <div class="position-relative has-icon-left">
+                                        <input type="time" id="txtEndTime" class="form-control" name="endtime">
+                                        <div class="form-control-position">
+                                            <i class="feather icon-clock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="timesheetinput2">Duration</label>
+                                <div class="col-md-3">
+                                    <div class="position-relative has-icon-left">
+                                        <select class="select2-icons form-control" id="ddlDuration">
+                                            <option data-icon="fa fa-clock-o">3</option>
+                                            <option data-icon="fa fa-clock-o">5</option>
+                                            <option data-icon="fa fa-clock-o">10</option>
+                                            <option data-icon="fa fa-clock-o">15</option>
+                                            <option data-icon="fa fa-clock-o">20</option>
+                                            <option data-icon="fa fa-clock-o">25</option>
+                                            <option data-icon="fa fa-clock-o">30</option>
+                                            <option data-icon="fa fa-clock-o">35</option>
+                                            <option data-icon="fa fa-clock-o">40</option>
+                                            <option data-icon="fa fa-clock-o">45</option>
+                                            <option data-icon="fa fa-clock-o">50</option>
+                                            <option data-icon="fa fa-clock-o">55</option>
+                                            <option data-icon="fa fa-clock-o">60</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="">preferred Days</label>
+                                <div class="col-md-6">
+                                    <table class="text-center">
+                                        <tr>
+                                            <td class="border m-0 p-0">
+                                                <label for="All">Select All</label>
+                                                <div class="input-group-text d-block border-0 rounded-0">
+                                                    <input type="checkbox" name="preferreddays" value="AllDays" id="chkAll">
+                                                </div>
+                                            </td>
+                                            <td class="border m-0 p-0">
+                                                <label for="Sunday">Sun</label>
+                                                <div class="input-group-text d-block border-0 rounded-0">
+                                                    <input type="checkbox" name="preferreddays" value="Sunday">
+                                                </div>
+                                            </td>
+                                            <td class="border m-0 p-0">
+                                                <label for="Sunday">Mon</label>
+                                                <div class="input-group-text d-block border-0 rounded-0">
+                                                    <input type="checkbox" value="Monday" name="preferreddays">
+                                                </div>
+                                            </td>
+                                            <td class="border m-0 p-0">
+                                                <label for="Sunday">Tue</label>
+                                                <div class="input-group-text d-block border-0 rounded-0">
+                                                    <input type="checkbox" value="Tuesday" name="preferreddays">
+                                                </div>
+                                            </td>
+                                            <td class="border m-0 p-0">
+                                                <label for="Sunday">Wed</label>
+                                                <div class="input-group-text d-block border-0 rounded-0">
+                                                    <input type="checkbox" value="Wednesday" name="preferreddays">
+                                                </div>
+                                            </td>
+                                            <td class="border m-0 p-0">
+                                                <label for="Sunday">Thu</label>
+                                                <div class="input-group-text d-block border-0 rounded-0">
+                                                    <input type="checkbox" value="Thursday" name="preferreddays">
+                                                </div>
+                                            </td>
+                                            <td class="border m-0 p-0">
+                                                <label for="Sunday">Fri</label>
+                                                <div class="input-group-text d-block border-0 rounded-0">
+                                                    <input type="checkbox" value="Friday" name="preferreddays">
+                                                </div>
+                                            </td>
+                                            <td class="border m-0 p-0">
+                                                <label for="Sunday">Sat</label>
+                                                <div class="input-group-text d-block border-0 rounded-0">
+                                                    <input type="checkbox" value="Saturday" name="preferreddays">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="form-actions center">
+                                <button type="button" class="btn btn-warning mr-1" id="btncancel">
+                                    <i class="feather icon-x" ></i> Cancel
+                                </button>
+                                <button type="submit" class="btn btn-primary" id="btnSlotCreation">
+                                    <i class="fa fa-check-square-o"></i> Save
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+                    </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var DoctorListUrl = '@Url.Action("GetDoctorList", "SlotCreation")';
+    var DoctorDropDownChangeUrl = '@Url.Action("GetDoctorDeptBranch", "SlotCreation")';
+    var SubmitNewSlot = '@Url.Action("NewSlot", "SlotCreation")';
+</script>

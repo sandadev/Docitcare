@@ -1,0 +1,2 @@
+2021-06-09 21:50:10,764 [122] INFO  DocitcareWebApp.Areas.Admin.Controllers.AccountController [(null)] - Hi I am log4net Info Level
+2021-06-09 23:30:43,218 [7] INFO  DocitcareWebApp.Areas.Admin.Controllers.AccountController [(null)] - Hi I am log4net Info Level

@@ -22,14 +22,14 @@ namespace DocitcareWebApp.Core.Domain
         public string LastName { get; set; }
         [Required]
         [Display(Name = "Telephone Number 1")]
-        public string TelephoneNumber1 { get; set; }
+        public long TelephoneNumber1 { get; set; }
        
         [Display(Name = "Telephone Number 2")]
-        public string TelephoneNumber2 { get; set; }
+        public long? TelephoneNumber2 { get; set; }
         [Required]
         [Display(Name = "Gender")]
         public int Gender { get; set; }
-        [Required]
+        
         [Display(Name = "Email")]
         public string Email { get; set; }
         [Required]
@@ -46,7 +46,7 @@ namespace DocitcareWebApp.Core.Domain
         [Required]
         [Display(Name = "Address Line 1")]
         public string Address1 { get; set; }
-        [Required]
+       // [Required]
         [Display(Name = "Address Line 2")]
         public string Address2 { get; set; }
 
@@ -62,7 +62,7 @@ namespace DocitcareWebApp.Core.Domain
         [Display(Name = "City")]
         public string City { get; set; }
 
-        [Required]
+      
         [Display(Name = "Pincode")]
         public string Pincode { get; set; }
 
@@ -76,10 +76,12 @@ namespace DocitcareWebApp.Core.Domain
         public string Languages { get; set; }
         [Display(Name = "Certification")]
         public string Certification { get; set; }
-        [Display(Name = "AwardsRecognition")]
+        [Display(Name = "Awards & Recognition")]
         public string AwardsRecognition { get; set; }
         [Display(Name = "Membership")]
         public string Membership { get; set; }
+        [Display(Name = "Registration")]
+        public string Registration { get; set; }
         [Display(Name = "File Upload")]
         public string File { get; set; }
         [Required]
@@ -103,6 +105,7 @@ namespace DocitcareWebApp.Core.Domain
         public int EntityId { get; set; }
 
         public Entity Entity { get; set; }
+            
 
         [Required]
         [Display(Name = "Department Name")]

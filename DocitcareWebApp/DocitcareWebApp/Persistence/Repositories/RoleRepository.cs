@@ -19,6 +19,13 @@ namespace DocitcareWebApp.Persistence.Repositories
             get { return Context as DocitcareDbContext; }
         }
 
+        public int GetRoleIdByRoleName(string roleName)
+        {
+            var role = DocitcareDbContext.Roles.Where(x => x.RoleName.ToLower().Contains(roleName.ToLower())).SingleOrDefault();
+            int roleId = role.RoleID;
+            return roleId;
+        }
+
         public IEnumerable<Role> GetRolesWithStatus()
         {
             return DocitcareDbContext.Roles.Include(r => r.Status).ToList();

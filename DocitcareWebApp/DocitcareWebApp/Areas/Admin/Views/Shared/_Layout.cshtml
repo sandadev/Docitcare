@@ -5,13 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="apple-touch-icon" href="~/Content/Theme/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/Theme/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link rel='stylesheet' href='https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'>
+          @Styles.Render("~/Content/css")
+          @Scripts.Render("~/bundles/modernizr")
+
+
 </head>
 <body class="vertical-layout vertical-menu 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
+
+    
+
     <!-- BEGIN: Header-->
     <nav class="header-navbar navbar-expand-md navbar navbar-with-menu fixed-top navbar-semi-dark navbar-shadow">
         <div class="navbar-wrapper">
@@ -32,7 +39,7 @@
                     <ul class="nav navbar-nav mr-auto float-left">
                         <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="feather icon-menu"></i></a></li>
                     </ul>
-                    <ul class="nav navbar-nav float-right">
+                    <ul class="nav navbar-nav float-right" id="addElementToNav">
                         <li class="dropdown dropdown-notification nav-item">
                             <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span class="badge badge-pill badge-danger badge-up">5</span></a>
                             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
@@ -276,6 +283,35 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/vendor")
+    @Scripts.Render("~/bundles/docitweb")
     @RenderSection("scripts", required: false)
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>
 </html>
+
+<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datetimepicker({
+            format: "DD/MM/YYYY"
+        }).on('dp.change', function (e) {
+            $(this).data('DateTimePicker').hide();
+            //$("#ddlAppointType").val("1");
+           // $("#ddlAppointType option[value=1]").attr('selected', 'selected');
+        })
+    });
+
+    $(document).ready(function () {
+       
+        var pageURL = $(location).attr("href");
+        var isBookAppointmentPage = pageURL.includes("/Admin/Receptionist/BookAppointment")
+        if (!isBookAppointmentPage) {
+            $("#ddlUserBranch").hide();
+        }
+       
+    });
+
+    function ConvertJsonDate(date) {
+        var date = new Date(parseInt(date.substr(6)));
+        return date;
+    }
+</script>

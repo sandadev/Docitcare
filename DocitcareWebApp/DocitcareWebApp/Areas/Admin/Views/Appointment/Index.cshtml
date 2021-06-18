@@ -1,0 +1,628 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    //Layout = null;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@*<head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel='stylesheet' href='https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'>
+        <script src="https://use.fontawesome.com/04516941b8.js"></script>
+        <link rel="stylesheet" href="~/Content/Theme/appointment_nanda.css">
+    </head>*@
+
+
+@*<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-body">*@
+
+<!-- Tagging JS start -->
+
+<head>
+    <style>
+        .ui-autocomplete {
+            z-index: 9999999999 !important;
+        }
+    </style>
+</head>
+<section class="tagging-js-tags" id="tagging-js">
+
+    <div class="row match-height">
+        <!-- Tagging JS Simple Options -->
+        <div class="col-9">
+            <div class="content-header row">
+                <div class="content-header-left col-md-6 col-12 mb-2">
+                    @*<div class="row breadcrumbs-top">
+                            <div class="breadcrumb-wrapper col-12">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="index.html">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Form Components</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Appointments
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>*@
+                    <h3 class="content-header-title mb-0">Appointments</h3>
+                </div>
+                <div class="content-header-right col-md-6 col-12">
+                    <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
+                        <a class="btn btn-outline-primary" href="">
+                            <i class="fa fa-sort-amount-asc"></i>
+                        </a>
+                        <a class="btn btn-outline-primary" href="">
+                            <i class="fa fa-print"></i>
+                        </a>
+                        <a class="btn btn-outline-primary" href="">
+                            <i class="fa fa-refresh"></i>
+                        </a>
+                        <a class="btn btn-outline-primary" href="">
+                            <i class="fa fa-expand"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6 col-xl-3 col-sm-6 col-12">
+                            <div class="card-header pt-0 pl-0">
+                                <h4 class="card-title"><i class="fa fa-sort"></i>&nbsp; Filter By</h4>
+                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body p-0">
+                                    <!-- Allow Case Sensitive -->
+                                    <fieldset class="form-group position-relative">
+                                        <select class="form-control" id="ddlAppointmentBranchList">
+                                            <option selected>Select Branch</option>
+                                        </select>
+                                    </fieldset>
+                                    <fieldset>
+                                        <select class="form-control" id="ddlAppointmentDepartment">
+                                            <option selected>Select Department</option>
+                                        </select>
+                                    </fieldset>
+                                    <fieldset>
+                                        <select class="form-control" id="ddlAppointmentDoctor">
+                                            <option selected>Select Doctor</option>
+                                        </select>
+                                    </fieldset>
+                                    <button type="button" class="btn btn-primary btn-min-width mr-1 mb-1" id="btnFilter">Filter</button>
+                                    <div class="">
+                                        <fieldset>
+                                            <input type="checkbox" id="input-15">
+                                            <label for="input-15">All</label>
+                                        </fieldset>
+                                        <fieldset>
+                                            <input type="checkbox" id="input-16" checked>
+                                            <label for="input-16">New Patients</label>
+                                        </fieldset>
+                                        <fieldset>
+                                            <input type="checkbox" id="input-15">
+                                            <label for="input-15">Practo Appointments</label>
+                                        </fieldset>
+                                        <fieldset>
+                                            <input type="checkbox" id="input-16" checked>
+                                            <label for="input-16">Walk-ins</label>
+                                        </fieldset>
+                                        <fieldset>
+                                            <input type="checkbox" id="input-15">
+                                            <label for="input-15">Except Walk-ins</label>
+                                        </fieldset>
+                                        <fieldset>
+                                            <input type="checkbox" id="input-16" checked>
+                                            <label for="input-16">Checked in</label>
+                                        </fieldset>
+                                        <fieldset>
+                                            <input type="checkbox" id="input-15">
+                                            <label for="input-15">Checked out</label>
+                                        </fieldset>
+                                        <fieldset>
+                                            <input type="checkbox" id="input-16" checked>
+                                            <label for="input-16">Parallel Booking</label>
+                                        </fieldset>
+                                        <fieldset>
+                                            <input type="checkbox" id="input-15">
+                                            <label for="input-15">Cancelled</label>
+                                        </fieldset>
+                                        <fieldset>
+                                            <input type="checkbox" id="input-16" checked>
+                                            <label for="input-16">No Show</label>
+                                        </fieldset>
+                                    </div>
+                                    <!-- Disable Close Char -->
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-xl-9 col-sm-6 col-12">
+                            <div class="card-content">
+                                <div class="card-body p-0">
+                                    <ul class="nav nav-tabs nav-top-border no-hover-bg" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="base-tab11" data-toggle="tab" aria-controls="tab11" href="#tab11"
+                                               role="tab" aria-selected="true">1<span>Appts</span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="base-tab12" data-toggle="tab" aria-controls="tab12" href="#tab12" role="tab"
+                                               aria-selected="false">2<span>Appts</span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="base-tab13" data-toggle="tab" aria-controls="tab13" href="#tab13" role="tab"
+                                               aria-selected="false">3<span>Appts</span></a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content px-1 pt-1">
+                                        <div class="tab-pane active" id="tab11" role="tabpanel" aria-labelledby="base-tab11">
+                                            <div class="details-container">
+                                                <img src="https://via.placeholder.com/120/09f/fff.png" alt="">
+                                                <div class="details-data">
+                                                    <h3>Mr. Hameed</h3>
+                                                    <h6>
+                                                        9014906079</h4>
+                                                        <h6>ID:</h6>
+                                                        <p>
+                                                            <lable for="New">New</lable>
+                                                        </p>
+                                                </div>
+                                                <div class="details-data">
+                                                    <h3>Dr.Anjani Kumar</h3>
+                                                    <h6>Consultation</h6>
+                                                    <h6><b>Notes:</b></h6>
+                                                </div>
+                                            </div>
+                                            <div class="timelap">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i> 11:00 AM
+                                                <div class="pull-right"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab12" role="tabpanel" aria-labelledby="base-tab12">
+                                            <p>
+                                                Sugar plum tootsie roll biscuit caramels. Liquorice brownie pastry cotton candy oat cake fruitcake
+                                                jelly chupa chups. Pudding caramels pastry powder cake soufflé wafer caramels. Jelly-o pie cupcake.
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane" id="tab13" role="tabpanel" aria-labelledby="base-tab13">
+                                            <p>
+                                                Biscuit ice cream halvah candy canes bear claw ice cream cake chocolate bar donut. Toffee cotton
+                                                candy liquorice. Oat cake lemon drops gingerbread dessert caramels. Sweet dessert jujubes powder
+                                                sweet sesame snaps.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card-header border-0-bottom">
+                <h4 class="card-title">Doctors</h4>
+                <small>Showing all doctors</small>
+                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="expand"><i class="fa fa-calendar-plus-o"></i></a></li>
+                        <li><a data-action="reload"><i class="fa fa-search"></i></a></li>
+                        <li><a data-action="reload"><i class="fa fa-filter"></i></a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="_doctorDetails">
+                        <a href="" id="doctorName"></a><span id="_doctorFee"></span>
+                        <p id="_department">Department</p>
+
+                    </div>
+                    <hr />
+                    <div class="_slotDetailsToday">
+                        <h3>Today</h3>
+                        <div>
+                            <span id="_today"></span>
+                        </div>
+
+                    </div>
+                    <hr />
+                    <div class="_slotDetailsWeek">
+                        <h3>Weekly Schedule</h3>
+                        <div>
+                            <span id="_weekly"></span>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="_appointmentAction">
+                        @*<a href="" id="_aBookSlot">Book</a>
+                            <a href="">Update Status</a>
+                            <a href="">Print</a>*@
+                        <div class="form-group">
+                            <button type="button" class="btn mr-1 mb-1 btn-primary btn-sm" id="btnSlotBooking" data-toggle="modal" data-target="#bootstrap">Book</button>
+                            <button type="button" class="btn mr-1 mb-1 btn-secondary btn-sm">Update Status</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tagging JS Advance Options -->
+
+    </div>
+
+</section>
+<div class="modal fade text-left" id="bootstrap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel35" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #87f588 ">
+                <h3 class="modal-title" id="myModalLabel35"> Slot Booking</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <hr />
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="text-center">
+                            <div class="card-body">
+                                <img src="~/Images/User/_default.png" class="rounded-circle  height-150" alt="Card image">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Michelle Howard</h4>
+                                <h6 class="card-subtitle text-muted">Managing Director</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div class="row justify-content-md-center">
+                <div class="col-lg-6">
+                    Search Patient:  <input type="text" class="form-control col-10" id="txtSearchBox" />
+                </div>
+            </div>
+          
+                <form>
+                    <div class="modal-body">
+                        <div class="row">
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>Slot Date</label>
+                                <input type="text" class="form-control" id="txtSlotDate" placeholder="Slot Date" disabled>
+                            </fieldset>
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>Slot Time</label>
+                                <input type="text" class="form-control" id="txtSlotTime" placeholder="Slot Time" disabled>
+                            </fieldset>
+                        </div>
+                        <div class="row">
+                            <input type="hidden" id="txtUserId" name="userId">
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" id="txtFirstName" placeholder="First Name">
+                            </fieldset>
+                            <br>
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" id="txtLastName" placeholder="Last Name">
+                            </fieldset>
+                            <br>
+                        </div>
+                        <div class="row">
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>Mobile Number</label>
+                                <input type="text" class="form-control" id="txtMobileNumber" placeholder="Mobile Number">
+                            </fieldset>
+                            <br>
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>Date of Birth</label>
+                                <input type="text" class="form-control datepicker" id="txtDob" placeholder="Date of Birth">
+                            </fieldset>
+                            <br>
+                        </div>
+                        <div class="row">
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>Gender</label>
+                                <div class="input-group">
+                                    <div class="d-inline-block custom-control custom-radio">
+                                        <input type="radio" id="rdoMale" value="0" name="gender" />
+                                        <label>Male</label>
+                                    </div>
+                                    <div class="d-inline-block custom-control custom-radio">
+                                        <input type="radio" id="rdoFemale" value="1" name="gender" />
+                                        <label>Female</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <br>
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>Martial Status</label>
+                                <div class="input-group">
+                                    <div class="d-inline-block custom-control custom-radio">
+                                        <input type="radio" id="rdoMarried" value="0" name="martialstatus" />
+                                        <label>Married</label>
+                                    </div>
+                                    <div class="d-inline-block custom-control custom-radio">
+                                        <input type="radio" id="rdoSingle" value="1" name="martialstatus" />
+                                        <label>Single</label>
+                                    </div>
+                                    <div class="d-inline-block custom-control custom-radio">
+                                        <input type="radio" id="rdoOthers" value="2" name="martialstatus" />
+                                        <label>Others</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <br>
+                        </div>
+                        <div class="row">
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>Address</label>
+                                <textarea class="form-control" id="txtAddress1" rows="3" placeholder="Address"></textarea>
+                            </fieldset>
+                            <br>
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>Country</label>
+                                <input type="text" class="form-control" id="txtCountry" placeholder="Country">
+                            </fieldset>
+                            <br>
+                        </div>
+                        <div class="row">
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>State</label>
+                                <input type="text" class="form-control" id="txtState" placeholder="State">
+                            </fieldset>
+                            <br>
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>City</label>
+                                <input type="text" class="form-control" id="txtCity" placeholder="City">
+                            </fieldset>
+                            <br>
+                        </div><div class="row">
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>Fee Amount</label>
+                                <input type="text" class="form-control" id="txtFeeAmount" placeholder="Fee Amount">
+                            </fieldset>
+                            <br>
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>Reffered By</label>
+                                <input type="text" class="form-control" id="txtRefferedBy" placeholder="Reffered By">
+                            </fieldset>
+                            <br>
+                        </div><div class="row">
+                            <fieldset class="form-group floating-label-form-group col-md-6">
+                                <label>Notes</label>
+                                <textarea class="form-control" id="txtNote" rows="3" placeholder="Notes"></textarea>
+                            </fieldset>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="close">
+                        <input type="submit" class="btn btn-outline-primary btn-lg" value="Book" id="btnBookAppointment">
+                    </div>
+                </form>
+             
+            </div>
+        </div>
+</div>
+
+<!--Model -->
+<!-- Tagging JS end -->
+<!-- Tagging-methods start -->
+
+<script>
+                var AppointmentUserBranchUrl = '@Url.Action("LoggerUserBranches", "Appointment")';
+                var AppointmentDepartmentDoctorUrl = '@Url.Action("GetDepartmentDoctor", "Appointment")';
+                var AppointmentDoctorUrl = '@Url.Action("DoctorInfo", "Appointment")';
+
+
+
+</script>
+
+
+@*</div>
+        </div>
+    </div>*@
+
+
+@*<section class="mt-30">
+        <div class="container-fluid">
+            <div class="row">
+                <h2 class="fw400">
+                    <span class="fw400">Appointments</span>
+                    <div class="filter-icons">
+                        <a href=""><i class="fa fa-sort-amount-asc" aria-hidden="true"></i><i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                        <a href=""><i class="fa fa-print" aria-hidden="true"></i><i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                        <a href=""><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        <a href=""><i class="fa fa-arrows-alt" aria-hidden="true"></i></a>
+                    </div>
+                </h2>
+            </div>
+            <div class="row app-details-wrapper">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <h5><i class="fa fa-sort" aria-hidden="true"></i> Filter By</h5>
+                    <form>
+                        <div class="form-group">
+                            <select class="form-control" id="ControlSelect">
+                                <option selected>Select Hospital</option>
+                                <option value="1">Lotus Hospitals for Women and Children - Lakidikapul - Physiotherapist</option>
+                                <option value="2">Neelima Hospitals</option>
+                                <option value="3">Prime Hospital</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" value="Lotus Hospitals for Women and Children - Lakidikapul - Physiotherapist, Washington"
+                                   data-role="tagsinput">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" value="All Doctors" data-role="tagsinput">
+                        </div>
+
+                        <hr />
+                        <button type="button" class="btn btn-info">Filter</button>
+                        <hr />
+                        <div class="container">
+                            <label class="checkbox">
+                                <input type="checkbox" value="option1" id="inlineCheckbox1"> All
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option2" id="inlineCheckbox2"> New Patients
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3"> Practo Appointments
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3"> Walk-ins
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option1" id="inlineCheckbox1"> Except Walk-ins
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option2" id="inlineCheckbox2"> Checked in
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3"> Checked out
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3"> Parallel Booking
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3"> Cancelled
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3"> No Show
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+
+                    <div id="app-container" class="container">
+                        <ul class="nav nav-pills">
+                            <li class="active"><a href="#appts" data-toggle="tab">1<span>Appts</span></a></li>
+                            <li><a href="#check-in" data-toggle="tab">2<span>Check in</span></a></li>
+                            <li><a href="#cancelled" data-toggle="tab">3<span>Cancelled</span></a></li>
+                            <li><a href="#check-out" data-toggle="tab">4<span>Check Out</span></a></li>
+                            <li><a href="#no-show" data-toggle="tab">5<span>No Show</span></a></li>
+                            <li><a href="#parllel" data-toggle="tab">6<span>Parallel</span></a></li>
+                            <li><a href="#notify" data-toggle="tab">7<span>Notifications</span></a></li>
+                        </ul>
+
+                        <div class="tab-content clearfix">
+                            <div class="tab-pane active" id="appts">
+                                <div class="details-container">
+                                    <img src="https://via.placeholder.com/80/09f/fff.png" alt="" />
+                                    <div class="details-data">
+                                        <h2>Mr. Hameed</h2>
+                                        <h4>9014906079</h4>
+                                        <h5>ID:</h5>
+                                        <p><lable for="New">New</lable></p>
+                                    </div>
+                                    <div class="details-data">
+                                        <h2>Dr.Anjani Kumar</h2>
+                                        <p>Consultation</p>
+                                        <p><b>Notes:</b></p>
+                                    </div>
+                                </div>
+                                <div class="timelap">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i> 11:00 AM
+                                    <div class="pull-right"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="check-in"><h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h3></div>
+                            <div class="tab-pane" id="cancelled">
+                                <h3>
+                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                                    type and scrambled it to make a type specimen book.
+                                </h3>
+                            </div>
+                            <div class="tab-pane" id="check-out"><h3>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h3></div>
+                            <div class="tab-pane" id="no-show"><h3>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</h3></div>
+                            <div class="tab-pane" id="parllel"><h3>More recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h3></div>
+                            <div class="tab-pane" id="notify">
+                                <h3>
+                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+                                    layout.
+                                </h3>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <h5><i class="fa fa-sort" aria-hidden="true"></i> Filter By</h5>
+                    <form>
+                        <div class="form-group">
+                            <select class="form-control" id="ControlSelect">
+                                <option selected>Select Hospital</option>
+                                <option value="1">Lotus Hospitals for Women and Children - Lakidikapul - Physiotherapist</option>
+                                <option value="2">Neelima Hospitals</option>
+                                <option value="3">Prime Hospital</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" value="Lotus Hospitals for Women and Children - Lakidikapul - Physiotherapist, Washington"
+                                   data-role="tagsinput">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" value="All Doctors" data-role="tagsinput">
+                        </div>
+
+                        <hr />
+                        <button type="button" class="btn btn-info">Filter</button>
+                        <hr />
+                        <div class="container">
+                            <label class="checkbox">
+                                <input type="checkbox" value="option1" id="inlineCheckbox1"> All
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option2" id="inlineCheckbox2"> New Patients
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3"> Practo Appointments
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3"> Walk-ins
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option1" id="inlineCheckbox1"> Except Walk-ins
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option2" id="inlineCheckbox2"> Checked in
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3"> Checked out
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3"> Parallel Booking
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3"> Cancelled
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3"> No Show
+                            </label>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section>*@
+
+
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src='https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js'></script>*@
+

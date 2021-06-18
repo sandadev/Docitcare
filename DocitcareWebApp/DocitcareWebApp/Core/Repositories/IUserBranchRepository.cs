@@ -9,5 +9,7 @@ namespace DocitcareWebApp.Core.Repositories
     public interface IUserBranchRepository:IRepository<UserBranches>
     {
         IEnumerable<UserBranches> GetBranchCount(int userId);
+
+        IEnumerable<object> GetUserBranchesName(int userId);
     }
 }

@@ -26,6 +26,9 @@ namespace DocitcareWebApp.Persistence
         public DbSet<Category> Categories { get; set; }
         public DbSet<UserDetails> Users { get; set; }
         public DbSet<UserBranches> UserBranches { get; set; }
+        public DbSet<SlotCreation> SlotCreations { get; set; }
+
+        public DbSet<SlotBooking> SlotBookings { get; set; }
 
 
 

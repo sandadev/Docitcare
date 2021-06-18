@@ -20,6 +20,8 @@ namespace DocitcareWebApp.Core
         IUserRepository User { get; }
         IUserBranchRepository UserBranches { get; }
         ICategoryRepository Category { get; }
+        ISlotCreationRepository SlotCreation { get; }
+        ISlotBookingRepository SlotBooking { get; }
         int Complete();
     }
 }

@@ -8,12 +8,14 @@ using DocitcareWebApp.Persistence;
 using DocitcareWebApp.Core;
 using System.Web.Security;
 using DocitcareWebApp.Core.Domain;
+using log4net;
 
 namespace DocitcareWebApp.Areas.Admin.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private static readonly ILog Log = LogManager.GetLogger(typeof(AccountController));
         public AccountController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -27,6 +29,7 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Login(UserDetails model, string returnUrl)
         {
+            Log.Info("Hi I am log4net Info Level");
             var isValid = _unitOfWork.User.ValidateCredentails(model);
             if (isValid!=null)
             {
@@ -34,6 +37,7 @@ namespace DocitcareWebApp.Areas.Admin.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(isValid.FirstName, true);
                     Session["entity"] = isValid.EntityId;
+                    Session["staffid"] = isValid.UserId;
                     return Redirect(returnUrl);
                 }
                 else

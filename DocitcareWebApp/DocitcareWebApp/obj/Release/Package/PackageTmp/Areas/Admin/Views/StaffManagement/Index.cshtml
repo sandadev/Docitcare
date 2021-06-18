@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<DocitcareWebApp.Core.ViewModels.StaffListViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -28,38 +28,47 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        User Id
-                                        @*@Html.DisplayNameFor(model => model.RoleName)*@
+                                        @Html.DisplayNameFor(model=>model.UserId)
+                                       
                                     </th>
                                     <th>
-                                        First Name
-                                        @*@Html.DisplayNameFor(model => model.Status.StatusName)*@
+                                        @Html.DisplayNameFor(model => model.FirstName)
+
                                     </th>
-                                    <th>Last Name</th>
-                                    <th>Gender</th>
-                                    <th>Role</th>
-                                    <th>Branch</th>
-                                    <th>Status</th>
+                                    <th> @Html.DisplayNameFor(model => model.LastName)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Gender)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Role)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Branches)</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @*@foreach (var item in Model)
+                                @foreach (var item in Model)
                                     {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.RoleName)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Status.StatusID)
-                                            </td>
-                                            <td>
-                                                @Html.ActionLink("Edit", "Edit", new { id = item.RoleID }) |
-                                                @Html.ActionLink("Details", "Details", new { id = item.RoleID }) |
-                                                @Html.ActionLink("Delete", "Delete", new { id = item.RoleID })
-                                            </td>
-                                        </tr>
-                                    }*@
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LastName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Gender)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Role)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Branches)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "EditStaff", new { id = item.UserId }) 
+                                    </td>
+                                </tr>
+                                    }
                             </tbody>
                         </table>
                     </div>

@@ -1,4 +1,5 @@
-﻿
+﻿    @model DocitcareWebApp.Core.ViewModels.UserViewModel
+
 @{
     ViewBag.Title = "Staff";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -21,49 +22,81 @@
             </div>
             <div class="card-content collpase show">
                 <div class="card-body">
-                    <form class="form">
+                    @*@using (Html.BeginForm("Staff", "StaffManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-body">
                             <h4 class="form-section"><i class="feather icon-user"></i> Personal Info</h4>
                             <div class="row">
                                 <div class="form-group col-md-6 mb-2">
-                                    <label for="projectinput1">First Name</label>
-                                    <input type="text" id="projectinput1" class="form-control" placeholder="First Name" name="fname">
+                                    @Html.LabelFor(model => model.UserDetails.FirstName)
+                                    @Html.EditorFor(model => model.UserDetails.FirstName, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "First Name" } })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.FirstName, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group col-md-6 mb-2">
-                                    <label for="projectinput2">Last Name</label>
-                                    <input type="text" id="projectinput2" class="form-control" placeholder="Last Name" name="lname">
+                                    @Html.LabelFor(model => model.UserDetails.LastName)
+                                    @Html.EditorFor(model => model.UserDetails.LastName, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Last Name" } })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.LastName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6 mb-2">
-                                    <label for="projectinput4">Date Of Birth</label>
-                                    <input type="text" id="projectinput4" class="form-control" placeholder="Date of Birth" name="phone">
+                                    @Html.LabelFor(model => model.DOB)
+                                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control col-12 datepicker", @placeholder = "Date of Birth" } })
+                                    @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-group col-md-6 mb-2">
-                                    <label for="projectinput3">E-mail</label>
-                                    <input type="text" id="projectinput3" class="form-control" placeholder="E-mail" name="email">
+                                    @Html.LabelFor(model => model.UserDetails.Email)
+                                    @Html.EditorFor(model => model.UserDetails.Email, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Email" } })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.Email, "", new { @class = "text-danger" })
                                 </div>
 
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6 mb-2">
-                                    <label for="projectinput4">Contact Number 1</label>
-                                    <input type="text" id="projectinput4" class="form-control" placeholder="Phone" name="phone">
+                                    @Html.LabelFor(model => model.UserDetails.TelephoneNumber1)
+                                    @Html.EditorFor(model => model.UserDetails.TelephoneNumber1, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Telephone Number 1" } })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.TelephoneNumber1, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group col-md-6 mb-2">
-                                    <label for="projectinput4">Contact Number 2</label>
-                                    <input type="text" id="projectinput4" class="form-control" placeholder="Phone" name="phone">
+                                    @Html.LabelFor(model => model.UserDetails.TelephoneNumber2)
+                                    @Html.EditorFor(model => model.UserDetails.TelephoneNumber2, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Telephone Number 2" } })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.TelephoneNumber2, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6 mb-2">
-                                    <label for="projectinput4">Gender</label>
-                                    <input type="text" id="projectinput4" class="form-control" placeholder="Phone" name="phone">
+                                    <label>Gender</label>
+                                    <div class="input-group">
+                                        <div class="d-inline-block custom-control custom-radio mr-1">
+                                            @Html.RadioButtonFor(s => s.UserDetails.Gender, "0", new { htmlAttributes = new { @class = "custom-control-input" } })
+                                            @Html.Label("Male", new { htmlAttributes = new { @class = "custom-control-label" } })
+                                        </div>
+                                        <div class="d-inline-block custom-control custom-radio">
+                                            @Html.RadioButtonFor(s => s.UserDetails.Gender, "1")
+                                            @Html.Label("Female", new { htmlAttributes = new { @class = "custom-control-label" } })
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group col-md-6 mb-2">
-                                    <label for="projectinput4">Martial Status</label>
-                                    <input type="text" id="projectinput4" class="form-control" placeholder="Phone" name="phone">
+                                    <label>Martial Status</label>
+                                    <div class="input-group">
+                                        <div class="d-inline-block custom-control custom-radio mr-1">
+                                            @Html.RadioButtonFor(s => s.UserDetails.MartialStatus, "0", new { htmlAttributes = new { @class = "custom-control-input" } })
+                                            @Html.Label("Married", new { htmlAttributes = new { @class = "custom-control-label" } })
+                                        </div>
+                                        <div class="d-inline-block custom-control custom-radio">
+                                            @Html.RadioButtonFor(s => s.UserDetails.MartialStatus, "1")
+                                            @Html.Label("Single", new { htmlAttributes = new { @class = "custom-control-label" } })
+                                        </div>
+                                        <div class="d-inline-block custom-control custom-radio">
+                                            @Html.RadioButtonFor(s => s.UserDetails.MartialStatus, "2")
+                                            @Html.Label("Other", new { htmlAttributes = new { @class = "custom-control-label" } })
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -71,26 +104,14 @@
 
                             <div class="row">
                                 <div class="form-group col-6 mb-2">
-                                    <label for="projectinput5">Select Role</label>
-                                    <select id="projectinput6" name="interested" class="form-control">
-                                        <option value="none" selected="" disabled="">Interested in</option>
-                                        <option value="design">design</option>
-                                        <option value="development">development</option>
-                                        <option value="illustration">illustration</option>
-                                        <option value="branding">branding</option>
-                                        <option value="video">video</option>
-                                    </select>
+                                    <label for="eventInput1">Select Branches</label>
+                                    @Html.ListBoxFor(x => x.UserDetails.SelectedBrachesArray, new MultiSelectList(Model.Branches, "BranchId", "BranchName"), new { @class = "select2-customize-result form-control col-12", @multiple = "" })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.Branches, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group col-6 mb-2">
-                                    <label for="projectinput5">Select Branches</label>
-                                    <select id="projectinput6" name="interested" class="form-control">
-                                        <option value="none" selected="" disabled="">Interested in</option>
-                                        <option value="design">design</option>
-                                        <option value="development">development</option>
-                                        <option value="illustration">illustration</option>
-                                        <option value="branding">branding</option>
-                                        <option value="video">video</option>
-                                    </select>
+                                    @Html.LabelFor(model => model.UserDetails.RoleID)
+                                    @Html.DropDownListFor(s => s.UserDetails.RoleID, new SelectList(Model.Roles, "RoleID", "RoleName"), "Select Role", htmlAttributes: new { @class = "select2 form-control col-12" })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.RoleID, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
@@ -99,14 +120,12 @@
                                     <label>User Type</label>
                                     <div class="input-group">
                                         <div class="d-inline-block custom-control custom-radio mr-1">
-                                            <input type="radio" name="customer2" class="custom-control-input" id="yes1">
-                                            <label class="custom-control-label" for="yes1">
-                                                Corporate
-                                            </label>
+                                            @Html.RadioButtonFor(s => s.UserDetails.UserType, "0", new { htmlAttributes = new { @class = "custom-control-input" } })
+                                            @Html.Label("Corporate", new { htmlAttributes = new { @class = "custom-control-label" } })
                                         </div>
                                         <div class="d-inline-block custom-control custom-radio">
-                                            <input type="radio" name="customer2" class="custom-control-input" id="no1">
-                                            <label class="custom-control-label" for="no1">Non-Corporate</label>
+                                            @Html.RadioButtonFor(s => s.UserDetails.UserType, "1")
+                                            @Html.Label("Non-Corporate", new { htmlAttributes = new { @class = "custom-control-label" } })
                                         </div>
                                     </div>
                                 </div>
@@ -115,77 +134,38 @@
                             <h4 class="form-section"><i class="feather icon-clipboard"></i> Address Details</h4>
                             <div class="row">
                                 <div class="form-group col-6 mb-2">
-                                    <label for="projectinput9">Address Line 1</label>
-                                    <textarea id="projectinput9" rows="2" class="form-control" name="comment" placeholder="About Project"></textarea>
+                                    @Html.LabelFor(model => model.UserDetails.Address1)
+                                    @Html.TextAreaFor(model => model.UserDetails.Address1, new { @class = "form-control col-12", @placeholder = "Address 1", cols = 80 })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.Address1, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group col-6 mb-2">
-                                    <label for="projectinput9">Address Line 2</label>
-                                    <textarea id="projectinput9" rows="2" class="form-control" name="comment" placeholder="About Project"></textarea>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-6 mb-2">
-                                    <label for="projectinput5">Country</label>
-                                    <select id="projectinput6" name="interested" class="form-control">
-                                        <option value="none" selected="" disabled="">Interested in</option>
-                                        <option value="design">design</option>
-                                        <option value="development">development</option>
-                                        <option value="illustration">illustration</option>
-                                        <option value="branding">branding</option>
-                                        <option value="video">video</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-6 mb-2">
-                                    <label for="projectinput5">State</label>
-                                    <select id="projectinput6" name="interested" class="form-control">
-                                        <option value="none" selected="" disabled="">Interested in</option>
-                                        <option value="design">design</option>
-                                        <option value="development">development</option>
-                                        <option value="illustration">illustration</option>
-                                        <option value="branding">branding</option>
-                                        <option value="video">video</option>
-                                    </select>
+                                    @Html.LabelFor(model => model.UserDetails.Address2)
+                                    @Html.TextAreaFor(model => model.UserDetails.Address2, new { @class = "form-control col-12", @placeholder = "Address 2", cols = 80 })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.Address2, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-6 mb-2">
-                                    <label for="projectinput5">City</label>
-                                    <select id="projectinput6" name="interested" class="form-control">
-                                        <option value="none" selected="" disabled="">Interested in</option>
-                                        <option value="design">design</option>
-                                        <option value="development">development</option>
-                                        <option value="illustration">illustration</option>
-                                        <option value="branding">branding</option>
-                                        <option value="video">video</option>
-                                    </select>
+                                    @Html.LabelFor(model => model.UserDetails.Country)
+                                    @Html.EditorFor(model => model.UserDetails.Country, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Country" } })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.Country, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group col-6 mb-2">
-                                    <label for="projectinput5">Area</label>
-                                    <select id="projectinput6" name="interested" class="form-control">
-                                        <option value="none" selected="" disabled="">Interested in</option>
-                                        <option value="design">design</option>
-                                        <option value="development">development</option>
-                                        <option value="illustration">illustration</option>
-                                        <option value="branding">branding</option>
-                                        <option value="video">video</option>
-                                    </select>
+                                    @Html.LabelFor(model => model.UserDetails.State)
+                                    @Html.EditorFor(model => model.UserDetails.State, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "State", } })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.State, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-6 mb-2">
-                                    <label for="projectinput5">Region</label>
-                                    <select id="projectinput6" name="interested" class="form-control">
-                                        <option value="none" selected="" disabled="">Interested in</option>
-                                        <option value="design">design</option>
-                                        <option value="development">development</option>
-                                        <option value="illustration">illustration</option>
-                                        <option value="branding">branding</option>
-                                        <option value="video">video</option>
-                                    </select>
+                                    @Html.LabelFor(model => model.UserDetails.City)
+                                    @Html.EditorFor(model => model.UserDetails.City, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "City" } })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.City, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group col-6 mb-2">
-                                    <label for="projectinput5">Pincode</label>
-                                    <input type="text" id="projectinput4" class="form-control" placeholder="Phone" name="phone">
+                                    @Html.LabelFor(model => model.UserDetails.Pincode)
+                                    @Html.EditorFor(model => model.UserDetails.Pincode, new { htmlAttributes = new { @class = "form-control col-12", @placeholder = "Pincode" } })
+                                    @Html.ValidationMessageFor(model => model.UserDetails.Pincode, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -198,10 +178,25 @@
                                 <i class="fa fa-check-square-o"></i> Save
                             </button>
                         </div>
-                    </form>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@*<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datetimepicker({
+            format: "DD/MM/YYYY"
+        }).on('dp.change', function (e) {
+            $(this).data('DateTimePicker').hide();
+        })
+    });
+</script>*@

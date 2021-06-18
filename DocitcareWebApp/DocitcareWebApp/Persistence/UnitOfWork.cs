@@ -25,7 +25,8 @@ namespace DocitcareWebApp.Persistence
             User = new UserRepository(_context);
             UserBranches = new UserBranchRepository(_context);
             Category = new CategoryRepository(_context);
-            
+            SlotCreation = new SlotCreationRepository(_context);
+            SlotBooking= new SlotBookingRepository(_context);
 
         }
         public IRoleRepository Roles { get; private set; }
@@ -39,6 +40,8 @@ namespace DocitcareWebApp.Persistence
         public IUserRepository User { get; private set; }
         public IUserBranchRepository UserBranches { get; private set; }
          public ICategoryRepository Category { get; private set; }
+        public ISlotCreationRepository SlotCreation { get; private set; }
+        public ISlotBookingRepository SlotBooking { get; private set; }
         public int Complete()
         {
             return _context.SaveChanges();

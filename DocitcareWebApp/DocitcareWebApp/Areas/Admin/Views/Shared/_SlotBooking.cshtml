@@ -1,0 +1,142 @@
+﻿
+
+
+
+<div class="modal fade text-left" id="bootstrap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel35" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-success">
+                <h3 class="modal-title" id="myModalLabel35"> Slot Booking</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <hr />
+
+            <div class="row justify-content-md-center">
+                <div class="col-lg-6">
+                    Search Patient:  <input type="text" class="form-control col-10" id="txtSearchBox" />
+                </div>
+            </div>
+
+            <form>
+                <div class="modal-body">
+                    <div class="row">
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>Slot Date</label>
+                            <input type="text" class="form-control" id="txtSlotDate" placeholder="Slot Date" disabled>
+                        </fieldset>
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>Slot Time</label>
+                            <input type="text" class="form-control" id="txtSlotTime" placeholder="Slot Time" disabled>
+                        </fieldset>
+                    </div>
+                    <div class="row">
+                        <input type="hidden" id="txtUserId" name="userId">
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>First Name</label>
+                            <input type="text" class="form-control" id="txtFirstName" placeholder="First Name">
+                        </fieldset>
+                        <br>
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>Last Name</label>
+                            <input type="text" class="form-control" id="txtLastName" placeholder="Last Name">
+                        </fieldset>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>Mobile Number</label>
+                            <input type="text" class="form-control" id="txtMobileNumber" placeholder="Mobile Number">
+                        </fieldset>
+                        <br>
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>Date of Birth</label>
+                            <input type="text" class="form-control datepicker" id="txtDob" placeholder="Date of Birth">
+                        </fieldset>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>Gender</label>
+                            <div class="input-group">
+                                <div class="d-inline-block custom-control custom-radio">
+                                    <input type="radio" id="rdoMale" value="0" name="gender" />
+                                    <label>Male</label>
+                                </div>
+                                <div class="d-inline-block custom-control custom-radio">
+                                    <input type="radio" id="rdoFemale" value="1" name="gender" />
+                                    <label>Female</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <br>
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>Martial Status</label>
+                            <div class="input-group">
+                                <div class="d-inline-block custom-control custom-radio">
+                                    <input type="radio" id="rdoMarried" value="0" name="martialstatus" />
+                                    <label>Married</label>
+                                </div>
+                                <div class="d-inline-block custom-control custom-radio">
+                                    <input type="radio" id="rdoSingle" value="1" name="martialstatus" />
+                                    <label>Single</label>
+                                </div>
+                                <div class="d-inline-block custom-control custom-radio">
+                                    <input type="radio" id="rdoOthers" value="2" name="martialstatus" />
+                                    <label>Others</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>Address</label>
+                            <textarea class="form-control" id="txtAddress1" rows="3" placeholder="Address"></textarea>
+                        </fieldset>
+                        <br>
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>Country</label>
+                            <input type="text" class="form-control" id="txtCountry" placeholder="Country">
+                        </fieldset>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>State</label>
+                            <input type="text" class="form-control" id="txtState" placeholder="State">
+                        </fieldset>
+                        <br>
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>City</label>
+                            <input type="text" class="form-control" id="txtCity" placeholder="City">
+                        </fieldset>
+                        <br>
+                    </div><div class="row">
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>Fee Amount</label>
+                            <input type="text" class="form-control" id="txtFeeAmount" placeholder="Fee Amount">
+                        </fieldset>
+                        <br>
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>Reffered By</label>
+                            <input type="text" class="form-control" id="txtRefferedBy" placeholder="Reffered By">
+                        </fieldset>
+                        <br>
+                    </div><div class="row">
+                        <fieldset class="form-group floating-label-form-group col-md-6">
+                            <label>Notes</label>
+                            <textarea class="form-control" id="txtNote" rows="3" placeholder="Notes"></textarea>
+                        </fieldset>
+                        <br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="close">
+                    <input type="submit" class="btn btn-outline-primary btn-lg" value="Book" id="btnBookAppointment">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
